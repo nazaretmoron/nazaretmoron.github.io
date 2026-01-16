@@ -445,6 +445,17 @@
             max-width: 750px;
             font-weight: 400;
         }
+        .section-subtitle.destacado {
+    font-family: 'Crimson Pro', serif;
+    font-size: 24px;
+    font-weight: 600;
+    font-style: italic;
+    color: var(--burdeos);
+    max-width: 750px;
+    margin: 30px auto;
+    text-align: center;
+    line-height: 1.6;
+}
         
         /* ABOUT SECTION - Editorial Grid */
         .about {
@@ -566,10 +577,13 @@
         }
         
         .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 28px;
-        }
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+    max-width: 900px;
+    margin: 0 auto;
+    justify-content: center;
+}
         
         .skill-card {
             padding: 35px;
@@ -998,7 +1012,7 @@
             <ul class="nav-links">
                 <li><a href="#sobre-mi">Sobre Mí</a></li>
                 <li><a href="#proyectos">Proyectos</a></li>
-                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#recursos">Servicios</a></li>
                 <li><a href="#contacto" class="nav-cta">Contacto</a></li>
             </ul>
         </div>
@@ -1129,7 +1143,7 @@
                     ¿Quién <span class="accent">soy?</span>
                 </h2>
                 <div class="page-divider"></div>
-                <p class="section-subtitle">
+                <p class="section-subtitle destacado">
                     Analista digital junior con experiencia en turismo y una pasión por convertir números en historias que generan impacto real.
                 </p>
             </div>
@@ -1155,28 +1169,10 @@
                         Desde Granada, España, busco oportunidades donde pueda combinar mi experiencia operativa en turismo con mis nuevas capacidades analíticas para <strong>generar impacto medible en conversión e ingresos</strong>.
                     </p>
                     
-                    <div class="skills-section" style="margin-top: 50px;">
-                        <h3>Experiencia Profesional</h3>
-                        <div class="experience-timeline">
-                            <div class="experience-item">
-                                <div class="exp-period">Abr 2024 - Oct 2024</div>
-                                <div class="exp-role">Agente de Reservas</div>
-                                <div class="exp-company">Heritage Queenstown · Nueva Zelanda</div>
-                            </div>
-                            <div class="experience-item">
-                                <div class="exp-period">Abr 2019 - Sept 2023</div>
-                                <div class="exp-role">Agente de Reservas</div>
-                                <div class="exp-company">Barceló Hotel Group · Praga</div>
-                            </div>
-                            <div class="experience-item">
-                                <div class="exp-period">Abr 2022 - Jul 2022</div>
-                                <div class="exp-role">Prácticas Revenue Management</div>
-                                <div class="exp-company">Barceló Hotel Group · Praga</div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="skills-section" id="servicios">
+                    .skills-section {
+    text-align: center;
+}
+                    <div class="skills-section">
                         <h3>Habilidades Adquiridas</h3>
                         <div class="skills-grid">
                             <div class="skill-card">
