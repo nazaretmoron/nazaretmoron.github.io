@@ -1120,7 +1120,7 @@
         </div>
     </div>
 
-    <!-- ABOUT SECTION -->
+    <!-- SECCIÓN SOBRE MÍ -->
     <section class="about" id="sobre-mi">
         <div class="section-container">
             <div class="section-header">
@@ -1129,7 +1129,7 @@
                     ¿Quién <span class="accent">soy?</span>
                 </h2>
                 <div class="page-divider"></div>
-                <p class="section-subtitle">
+                <p class="section-subtitle destacado">
                     Analista digital junior con experiencia en turismo y una pasión por convertir números en historias que generan impacto real.
                 </p>
             </div>
@@ -1154,11 +1154,12 @@
                     <p>
                         Desde Granada, España, busco oportunidades donde pueda combinar mi experiencia operativa en turismo con mis nuevas capacidades analíticas para <strong>generar impacto medible en conversión e ingresos</strong>.
                     </p>
-                    
-                   
-                    
-                    <div class="skills-section" id="servicios">
-                        <!-- SECCIÓN HABILIDADES (SEPARADA Y CENTRADA) -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN HABILIDADES (SEPARADA Y CENTRADA) -->
     <section class="skills">
         <div class="section-container">
             <div class="section-header">
@@ -1190,7 +1191,7 @@
         </div>
     </section>
 
-    <!-- PROJECTS SECTION -->
+    <!-- SECCIÓN PROYECTOS -->
     <section class="projects" id="proyectos">
         <div class="section-container">
             <div class="section-header">
@@ -1205,7 +1206,6 @@
             </div>
             
             <div class="projects-grid" id="projectsGrid">
-                <!-- Projects will be dynamically added here -->
                 <div class="no-projects-message">
                     <div class="coming-soon-icon">🚀</div>
                     <h3>Proyectos en Camino</h3>
@@ -1215,7 +1215,7 @@
         </div>
     </section>
 
-    <!-- CONTACT SECTION -->
+    <!-- SECCIÓN CONTACTO -->
     <section class="contact" id="contacto">
         <div class="contact-geometric"></div>
         <div class="section-container">
@@ -1227,7 +1227,7 @@
                     Busco oportunidades como analista digital junior donde pueda aportar mi combinación única de conocimiento del cliente y habilidades técnicas en datos para generar impacto medible.
                 </p>
                 <div class="contact-buttons">
-                     <a href="https://mail.google.com/mail/?view=cm&fs=1&to=data.nazaret@gmail.com" target="_blank" class="contact-btn primary">
+                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=data.nazaret@gmail.com" target="_blank" class="contact-btn primary">
                         📧 Enviar Email
                     </a>
                     <a href="https://linkedin.com/in/nazaretmoron" target="_blank" class="contact-btn secondary">
@@ -1238,13 +1238,11 @@
         </div>
     </section>
 
-    <!-- FOOTER -->
     <footer>
         <p>© 2026 Nazaret Morón · Analista Digital · Granada, España · Hecho con datos y ✨</p>
     </footer>
 
     <script>
-        // AUTO-COUNT PROJECTS
         function updateProjectCount() {
             const projectCards = document.querySelectorAll('.project-card');
             const projectCount = projectCards.length;
@@ -1254,10 +1252,8 @@
             }
         }
 
-        // Initialize project count on load
         updateProjectCount();
 
-        // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -1271,7 +1267,6 @@
             });
         });
 
-        // Scroll reveal animations
         const observerOptions = {
             threshold: 0.15,
             rootMargin: '0px 0px -80px 0px'
@@ -1292,30 +1287,6 @@
             el.style.transition = `all 0.7s ease-out ${index * 0.12}s`;
             observer.observe(el);
         });
-
-        // ===== GOOGLE ANALYTICS 4 & GTM SETUP =====
-        // TODO: Replace 'G-XXXXXXXXXX' with your actual GA4 Measurement ID
-        // TODO: Replace 'GTM-XXXXXXX' with your actual GTM Container ID
-        
-        // Google Tag Manager (GTM) - Add to <head>
-        /*
-        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-        })(window,document,'script','dataLayer','GTM-XXXXXXX');
-        */
-
-        // Google Analytics 4 (GA4) - Alternative direct implementation
-        /*
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-XXXXXXXXXX');
-        */
-
-        console.log('Portfolio cargado - Recuerda implementar GA4 y GTM');
-        console.log('Instrucciones: https://support.google.com/analytics/answer/9304153');
     </script>
 </body>
 </html>
