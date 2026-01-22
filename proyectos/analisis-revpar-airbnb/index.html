@@ -1,276 +1,1441 @@
 
-Case Study — Enero 2026
-Análisis
-RevPAR
-Airbnb Málaga
-Un estudio de datos sobre más de 8.300 propiedades para identificar los barrios con mayor potencial de rentabilidad en el mercado de alojamiento turístico.
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análisis RevPAR Airbnb Málaga - Case Study</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Work+Sans:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Work Sans', sans-serif;
+            background: #F5F1E8;
+            color: #2B2B2B;
+            line-height: 1.8;
+        }
+        
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            margin: 20px auto;
+            background: #FDFCFA;
+            box-shadow: 0 0 40px rgba(0,0,0,0.08);
+            position: relative;
+            page-break-after: always;
+            overflow: hidden;
+        }
+        
+        /* PORTADA */
+        .cover {
+            background: #68192E;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 80px 60px;
+            position: relative;
+        }
+        
+        .cover-geometric {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            border: 1px solid rgba(255, 20, 147, 0.15);
+            transform: rotate(45deg);
+            top: -300px;
+            right: -300px;
+        }
+        
+        .cover-top {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .cover-label {
+            font-family: 'Work Sans', sans-serif;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 4px;
+            color: #FFD700;
+            text-transform: uppercase;
+            margin-bottom: 60px;
+        }
+        
+        .cover h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 78px;
+            font-weight: 700;
+            color: #FDFCFA;
+            line-height: 0.95;
+            margin-bottom: 30px;
+        }
+        
+        .cover h1 .highlight {
+            color: #FF1493;
+            font-style: italic;
+        }
+        
+        .cover-subtitle {
+            font-family: 'Work Sans', sans-serif;
+            font-size: 18px;
+            font-weight: 300;
+            color: #F7E7CE;
+            letter-spacing: 0.5px;
+            max-width: 500px;
+            line-height: 1.6;
+        }
+        
+        .cover-bottom {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            border-top: 1px solid rgba(255, 215, 0, 0.3);
+            padding-top: 30px;
+        }
+        
+        .cover-author {
+            font-family: 'Work Sans', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            color: #FDFCFA;
+            letter-spacing: 1px;
+        }
+        
+        .cover-role {
+            font-size: 13px;
+            font-weight: 300;
+            color: #E0AC9C;
+            margin-top: 5px;
+        }
+        
+        .cover-date {
+            font-family: 'Work Sans', sans-serif;
+            font-size: 13px;
+            font-weight: 300;
+            color: #F7E7CE;
+            text-align: right;
+        }
+        
+        /* ÍNDICE */
+        .index-page {
+            padding: 80px 60px;
+            background: #FDFCFA;
+        }
+        
+        .page-header {
+            margin-bottom: 80px;
+        }
+        
+        .page-number-display {
+            font-family: 'Playfair Display', serif;
+            font-size: 120px;
+            font-weight: 700;
+            color: #F7E7CE;
+            line-height: 1;
+            margin-bottom: -20px;
+        }
+        
+        .page-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 64px;
+            font-weight: 700;
+            color: #68192E;
+            line-height: 1;
+        }
+        
+        .page-divider {
+            width: 80px;
+            height: 2px;
+            background: #FF1493;
+            margin: 40px 0;
+        }
+        
+        .index-quote {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            font-style: italic;
+            color: #68192E;
+            line-height: 1.6;
+            border-left: 3px solid #FFD700;
+            padding-left: 40px;
+            margin: 60px 0;
+            max-width: 600px;
+        }
+        
+        .index-list {
+            list-style: none;
+            margin-top: 60px;
+        }
+        
+        .index-list li {
+            display: grid;
+            grid-template-columns: 60px 1fr 60px;
+            align-items: baseline;
+            padding: 25px 0;
+            border-bottom: 1px solid #F7E7CE;
+            font-family: 'Work Sans', sans-serif;
+            transition: all 0.3s;
+        }
+        
+        .index-list li:hover {
+            padding-left: 20px;
+            border-bottom-color: #FF1493;
+        }
+        
+        .index-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            font-weight: 700;
+            color: #FFD700;
+        }
+        
+        .index-title {
+            font-size: 18px;
+            font-weight: 500;
+            color: #2B2B2B;
+            letter-spacing: 0.5px;
+        }
+        
+        .index-page-num {
+            text-align: right;
+            font-size: 16px;
+            font-weight: 300;
+            color: #999;
+        }
+        
+        /* PÁGINAS DE CONTENIDO */
+        .content-page {
+            padding: 80px 60px;
+            position: relative;
+        }
+        
+        .content-header {
+            margin-bottom: 60px;
+        }
+        
+        .section-label {
+            font-family: 'Work Sans', sans-serif;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            color: #FFD700;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+        
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 56px;
+            font-weight: 700;
+            color: #68192E;
+            line-height: 1.1;
+        }
+        
+        .section-title .accent {
+            color: #FF1493;
+            font-style: italic;
+        }
+        
+        .text-block {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #444;
+            margin-bottom: 30px;
+        }
+        
+        .text-block.lead {
+            font-size: 20px;
+            font-weight: 300;
+            color: #68192E;
+            line-height: 1.7;
+        }
+        
+        /* CAJAS DESTACADAS */
+        .highlight-section {
+            background: #68192E;
+            color: #FDFCFA;
+            padding: 50px;
+            margin: 50px 0;
+            position: relative;
+        }
+        
+        .highlight-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: #FF1493;
+        }
+        
+        .highlight-section h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: #FFD700;
+            margin-bottom: 20px;
+        }
+        
+        .highlight-section p {
+            font-size: 18px;
+            line-height: 1.7;
+            font-weight: 300;
+        }
+        
+        /* GRID DE ESTADÍSTICAS */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin: 50px 0;
+        }
+        
+        .stat-box {
+            border: 1px solid #E8E0D0;
+            padding: 40px 30px;
+            transition: all 0.3s;
+            position: relative;
+        }
+        
+        .stat-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #FF1493;
+            transition: width 0.3s;
+        }
+        
+        .stat-box:hover {
+            border-color: #FF1493;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+        
+        .stat-box:hover::before {
+            width: 100%;
+        }
+        
+        .stat-value {
+            font-family: 'Playfair Display', serif;
+            font-size: 56px;
+            font-weight: 700;
+            color: #FF1493;
+            line-height: 1;
+            margin-bottom: 15px;
+        }
+        
+        .stat-label {
+            font-family: 'Work Sans', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            color: #68192E;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .stat-description {
+            font-size: 13px;
+            color: #666;
+            margin-top: 10px;
+            font-weight: 300;
+        }
+        
+        /* INSIGHT BOX */
+        .insight-box {
+            background: #F7E7CE;
+            padding: 40px;
+            margin: 40px 0;
+            border-left: 4px solid #FFD700;
+            position: relative;
+        }
+        
+        .insight-label {
+            font-family: 'Work Sans', sans-serif;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            color: #68192E;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+        
+        .insight-text {
+            font-size: 18px;
+            color: #2B2B2B;
+            line-height: 1.7;
+        }
+        
+        .insight-text strong {
+            color: #68192E;
+            font-weight: 600;
+        }
+        
+        /* METODOLOGÍA PASOS */
+        .method-steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin: 50px 0;
+        }
+        
+        .method-step {
+            text-align: center;
+            padding: 30px 20px;
+            border: 1px solid #E8E0D0;
+            position: relative;
+        }
+        
+        .method-step::after {
+            content: '→';
+            position: absolute;
+            right: -30px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 24px;
+            color: #FFD700;
+        }
+        
+        .method-step:last-child::after {
+            display: none;
+        }
+        
+        .step-num {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            font-weight: 700;
+            color: #FF1493;
+            line-height: 1;
+            margin-bottom: 15px;
+        }
+        
+        .step-title {
+            font-family: 'Work Sans', sans-serif;
+            font-size: 13px;
+            font-weight: 700;
+            color: #68192E;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+        
+        .step-desc {
+            font-size: 12px;
+            color: #666;
+            font-weight: 300;
+        }
+        
+        /* HERRAMIENTAS */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin: 50px 0;
+        }
+        
+        .tool-card {
+            border: 1px solid #E8E0D0;
+            padding: 35px 25px;
+            text-align: center;
+        }
+        
+        .tool-symbol {
+            font-family: 'Playfair Display', serif;
+            font-size: 64px;
+            font-weight: 700;
+            color: #F7E7CE;
+            line-height: 1;
+            margin-bottom: 20px;
+        }
+        
+        .tool-name {
+            font-family: 'Work Sans', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            color: #68192E;
+            margin-bottom: 10px;
+        }
+        
+        .tool-use {
+            font-size: 13px;
+            color: #666;
+            font-weight: 300;
+        }
+        
+        /* GRÁFICOS */
+        .chart-container {
+            margin: 50px 0;
+            text-align: center;
+        }
+        
+        .chart-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-weight: 600;
+            color: #68192E;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        
+        .chart-image {
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #E8E0D0;
+            padding: 20px;
+            background: white;
+        }
+        
+        .chart-caption {
+            font-size: 13px;
+            color: #666;
+            font-style: italic;
+            margin-top: 15px;
+            text-align: left;
+        }
+        
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 40px 0;
+            font-size: 14px;
+        }
+        
+        .data-table thead {
+            background: #68192E;
+            color: white;
+        }
+        
+        .data-table th {
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .data-table td {
+            padding: 15px;
+            border-bottom: 1px solid #E8E0D0;
+        }
+        
+        .data-table tr:hover {
+            background: #F7E7CE;
+        }
+        
+        .data-table .highlight-row {
+            background: #FFB3C1;
+            font-weight: 600;
+        }
+        
+        .data-table .number-cell {
+            font-family: 'Playfair Display', serif;
+            font-size: 16px;
+            font-weight: 700;
+            color: #FF1493;
+        }
+        
+        /* HALLAZGOS */
+        .finding-card {
+            background: #FDFCFA;
+            border-left: 4px solid #FF1493;
+            padding: 35px;
+            margin: 30px 0;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.04);
+        }
+        
+        .finding-card.alt {
+            background: #68192E;
+            color: #FDFCFA;
+            border-left-color: #FFD700;
+        }
+        
+        .finding-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 72px;
+            font-weight: 700;
+            color: #F7E7CE;
+            line-height: 1;
+            margin-bottom: 20px;
+        }
+        
+        .finding-card.alt .finding-number {
+            color: rgba(255, 215, 0, 0.3);
+        }
+        
+        .finding-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: #68192E;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+        
+        .finding-card.alt .finding-title {
+            color: #FFD700;
+        }
+        
+        .finding-content {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #444;
+        }
+        
+        .finding-card.alt .finding-content {
+            color: #FDFCFA;
+        }
+        
+        .finding-recommendation {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #E8E0D0;
+            font-weight: 500;
+            color: #68192E;
+        }
+        
+        .finding-card.alt .finding-recommendation {
+            border-top-color: rgba(255, 215, 0, 0.3);
+            color: #FFD700;
+        }
+        
+        /* LISTA DE ITEMS */
+        .content-list {
+            list-style: none;
+            margin: 40px 0;
+        }
+        
+        .content-list li {
+            padding: 25px 0;
+            border-bottom: 1px solid #E8E0D0;
+        }
+        
+        .content-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .list-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #68192E;
+            margin-bottom: 10px;
+        }
+        
+        .list-content {
+            font-size: 15px;
+            color: #666;
+            line-height: 1.7;
+        }
+        
+        /* CONCLUSIONES FINALES */
+        .conclusion-box {
+            background: #FFD700;
+            padding: 50px;
+            margin: 50px 0;
+            position: relative;
+        }
+        
+        .conclusion-box h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 36px;
+            font-weight: 700;
+            color: #68192E;
+            margin-bottom: 25px;
+        }
+        
+        .conclusion-box p {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #2B2B2B;
+        }
+        
+        /* PÁGINA FINAL */
+        .final-page {
+            background: #68192E;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 80px 60px;
+        }
+        
+        .final-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 56px;
+            font-weight: 700;
+            color: #FDFCFA;
+            margin-bottom: 30px;
+            line-height: 1.2;
+        }
+        
+        .final-subtitle {
+            font-size: 18px;
+            color: #F7E7CE;
+            margin-bottom: 60px;
+            font-weight: 300;
+        }
+        
+        .contact-info {
+            margin: 40px 0;
+        }
+        
+        .contact-item {
+            font-size: 16px;
+            color: #FDFCFA;
+            margin: 15px 0;
+            letter-spacing: 1px;
+        }
+        
+        .contact-item a {
+            color: #FF1493;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.3s;
+        }
+        
+        .contact-item a:hover {
+            border-bottom-color: #FF1493;
+        }
+        
+        @media print {
+            .page {
+                margin: 0;
+                box-shadow: none;
+            }
+            body {
+                background: white;
+            }
+        }
+    </style>
+</head>
+<body>
 
-NAZARET MORÓN
-Analista Digital
-Granada, España
-2025
-01
-Índice
-Los datos sin análisis son solo números. El verdadero valor está en transformarlos en decisiones estratégicas que generen impacto real.
-01
-Resumen Ejecutivo
-03
-02
-Contexto y Objetivos
-04
-03
-Metodología
-05
-04
-Análisis de Datos
-07
-05
-Hallazgos Clave
-09
-06
-Recomendaciones
-11
-07
-Conclusiones
-13
-Resumen Ejecutivo
-El panorama
-general
-Este proyecto analiza más de 8.300 propiedades de Airbnb en Málaga para identificar los barrios más rentables para inversión en alojamiento turístico, utilizando el RevPAR como métrica principal de rentabilidad.
+    <!-- PORTADA -->
+    <div class="page cover">
+        <div class="cover-geometric"></div>
+        <div class="cover-top">
+            <div class="cover-label">Case Study — Enero 2026</div>
+            <h1>
+                Análisis<br>
+                <span class="highlight">RevPAR</span><br>
+                Airbnb Málaga
+            </h1>
+            <p class="cover-subtitle">
+                Un estudio de datos sobre más de 8.300 propiedades para identificar los barrios con mayor potencial de rentabilidad en el mercado de alojamiento turístico.
+            </p>
+        </div>
+        <div class="cover-bottom">
+            <div>
+                <div class="cover-author">NAZARET MORÓN</div>
+                <div class="cover-role">Analista Digital</div>
+            </div>
+            <div class="cover-date">
+                Granada, España<br>
+                2025
+            </div>
+        </div>
+    </div>
 
-Pregunta Central
-¿Dónde abrir un hostel o propiedad de alquiler turístico en Málaga para maximizar la rentabilidad y minimizar la competencia?
+    <!-- ÍNDICE -->
+    <div class="page index-page">
+        <div class="page-header">
+            <div class="page-number-display">01</div>
+            <h2 class="page-title">Índice</h2>
+            <div class="page-divider"></div>
+        </div>
+        
+        <div class="index-quote">
+            Los datos sin análisis son solo números. El verdadero valor está en transformarlos en decisiones estratégicas que generen impacto real.
+        </div>
+        
+        <ul class="index-list">
+            <li>
+                <span class="index-number">01</span>
+                <span class="index-title">Resumen Ejecutivo</span>
+                <span class="index-page-num">03</span>
+            </li>
+            <li>
+                <span class="index-number">02</span>
+                <span class="index-title">Contexto y Objetivos</span>
+                <span class="index-page-num">04</span>
+            </li>
+            <li>
+                <span class="index-number">03</span>
+                <span class="index-title">Metodología</span>
+                <span class="index-page-num">05</span>
+            </li>
+            <li>
+                <span class="index-number">04</span>
+                <span class="index-title">Análisis de Datos</span>
+                <span class="index-page-num">07</span>
+            </li>
+            <li>
+                <span class="index-number">05</span>
+                <span class="index-title">Hallazgos Clave</span>
+                <span class="index-page-num">09</span>
+            </li>
+            <li>
+                <span class="index-number">06</span>
+                <span class="index-title">Recomendaciones</span>
+                <span class="index-page-num">11</span>
+            </li>
+            <li>
+                <span class="index-number">07</span>
+                <span class="index-title">Conclusiones</span>
+                <span class="index-page-num">13</span>
+            </li>
+        </ul>
+    </div>
 
-8.300+
-Propiedades
-Analizadas en 11 barrios de Málaga
-12,4€
-RevPAR Máximo
-Rentabilidad más alta encontrada
-77%
-Concentración
-Del mercado en una sola zona
-5
-Insights
-Hallazgos accionables clave
-Hallazgo Principal
-Churriana supera a Centro en rentabilidad (12,4€ vs 12,1€ RevPAR) con 98% menos competencia (150 vs 6.389 propiedades). Los barrios periféricos emergentes ofrecen mejor ROI que las zonas tradicionales saturadas.
+    <!-- RESUMEN EJECUTIVO -->
+    <div class="page content-page">
+        <div class="content-header">
+            <div class="section-label">Resumen Ejecutivo</div>
+            <h2 class="section-title">
+                El <span class="accent">panorama</span><br>
+                general
+            </h2>
+            <div class="page-divider"></div>
+        </div>
+        
+        <p class="text-block lead">
+            Este proyecto analiza más de 8.300 propiedades de Airbnb en Málaga para identificar los barrios más rentables para inversión en alojamiento turístico, utilizando el RevPAR como métrica principal de rentabilidad.
+        </p>
+        
+        <div class="highlight-section">
+            <h3>Pregunta Central</h3>
+            <p>¿Dónde abrir un hostel o propiedad de alquiler turístico en Málaga para maximizar la rentabilidad y minimizar la competencia?</p>
+        </div>
+        
+        <div class="stats-grid">
+            <div class="stat-box">
+                <div class="stat-value">8.300+</div>
+                <div class="stat-label">Propiedades</div>
+                <div class="stat-description">Analizadas en 11 barrios de Málaga</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-value">12,4€</div>
+                <div class="stat-label">RevPAR Máximo</div>
+                <div class="stat-description">Rentabilidad más alta encontrada</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-value">77%</div>
+                <div class="stat-label">Concentración</div>
+                <div class="stat-description">Del mercado en una sola zona</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-value">5</div>
+                <div class="stat-label">Insights</div>
+                <div class="stat-description">Hallazgos accionables clave</div>
+            </div>
+        </div>
+        
+        <div class="insight-box">
+            <div class="insight-label">Hallazgo Principal</div>
+            <p class="insight-text">
+                <strong>Churriana</strong> supera a Centro en rentabilidad (12,4€ vs 12,1€ RevPAR) con <strong>98% menos competencia</strong> (150 vs 6.389 propiedades). Los barrios periféricos emergentes ofrecen mejor ROI que las zonas tradicionales saturadas.
+            </p>
+        </div>
+    </div>
 
-Contexto y Objetivos
-El problema
-a resolver
-Málaga se ha consolidado como uno de los destinos turísticos de mayor crecimiento en España. El mercado de alojamiento turístico muestra alta saturación en zonas tradicionales como el Centro, pero existe poca información sobre el potencial real de rentabilidad de barrios alternativos.
+    <!-- CONTEXTO Y OBJETIVOS -->
+    <div class="page content-page">
+        <div class="content-header">
+            <div class="section-label">Contexto y Objetivos</div>
+            <h2 class="section-title">
+                El <span class="accent">problema</span><br>
+                a resolver
+            </h2>
+            <div class="page-divider"></div>
+        </div>
+        
+        <p class="text-block">
+            Málaga se ha consolidado como uno de los destinos turísticos de mayor crecimiento en España. El mercado de alojamiento turístico muestra alta saturación en zonas tradicionales como el Centro, pero existe poca información sobre el potencial real de rentabilidad de barrios alternativos.
+        </p>
+        
+        <div class="highlight-section">
+            <h3>Objetivo Principal</h3>
+            <p>Identificar el barrio con mayor potencial de rentabilidad para la apertura de un nuevo hostel o propiedad de alquiler turístico, utilizando datos reales de comportamiento del mercado.</p>
+        </div>
+        
+        <h3 style="font-family: 'Playfair Display', serif; font-size: 32px; color: #68192E; margin: 50px 0 30px;">Objetivos Específicos</h3>
+        
+        <ul class="content-list">
+            <li>
+                <div class="list-title">01 — Analizar rentabilidad por barrio</div>
+                <div class="list-content">Calcular el RevPAR (Revenue Per Available Room) como indicador principal de rentabilidad real por zona geográfica.</div>
+            </li>
+            <li>
+                <div class="list-title">02 — Identificar nivel de competencia</div>
+                <div class="list-content">Evaluar el número de propiedades existentes por zona para determinar el grado de saturación del mercado.</div>
+            </li>
+            <li>
+                <div class="list-title">03 — Evaluar calidad percibida</div>
+                <div class="list-content">Analizar ratings promedio por barrio como indicador de satisfacción del cliente y posicionamiento de calidad.</div>
+            </li>
+            <li>
+                <div class="list-title">04 — Generar recomendaciones estratégicas</div>
+                <div class="list-content">Proporcionar conclusiones útiles basadas en datos para fundamentar decisiones de inversión inmobiliaria.</div>
+            </li>
+        </ul>
+    </div>
 
-Objetivo Principal
-Identificar el barrio con mayor potencial de rentabilidad para la apertura de un nuevo hostel o propiedad de alquiler turístico, utilizando datos reales de comportamiento del mercado.
+    <!-- METODOLOGÍA -->
+    <div class="page content-page">
+        <div class="content-header">
+            <div class="section-label">Metodología</div>
+            <h2 class="section-title">
+                Proceso de<br>
+                <span class="accent">análisis</span>
+            </h2>
+            <div class="page-divider"></div>
+        </div>
+        
+        <div class="method-steps">
+            <div class="method-step">
+                <div class="step-num">01</div>
+                <div class="step-title">Extracción</div>
+                <div class="step-desc">Descarga de datos desde Inside Airbnb (dataset público)</div>
+            </div>
+            <div class="method-step">
+                <div class="step-num">02</div>
+                <div class="step-title">Limpieza</div>
+                <div class="step-desc">Normalización de precios, formatos y eliminación de outliers</div>
+            </div>
+            <div class="method-step">
+                <div class="step-num">03</div>
+                <div class="step-title">Análisis</div>
+                <div class="step-desc">Cálculo de métricas clave y agregación por barrio</div>
+            </div>
+            <div class="method-step">
+                <div class="step-num">04</div>
+                <div class="step-title">Insights</div>
+                <div class="step-desc">Interpretación de resultados y generación de recomendaciones</div>
+            </div>
+        </div>
+        
+        <h3 style="font-family: 'Playfair Display', serif; font-size: 32px; color: #68192E; margin: 50px 0 30px;">Herramientas Utilizadas</h3>
+        
+        <div class="tools-grid">
+            <div class="tool-card">
+                <div class="tool-symbol">∑</div>
+                <div class="tool-name">Google Sheets</div>
+                <div class="tool-use">Análisis y cálculos estadísticos</div>
+            </div>
+            <div class="tool-card">
+                <div class="tool-symbol">⌘</div>
+                <div class="tool-name">Inside Airbnb</div>
+                <div class="tool-use">Fuente de datos abiertos</div>
+            </div>
+            <div class="tool-card">
+                <div class="tool-symbol">◊</div>
+                <div class="tool-name">Looker Studio</div>
+                <div class="tool-use">Visualización de datos</div>
+            </div>
+        </div>
+        
+        <h3 style="font-family: 'Playfair Display', serif; font-size: 32px; color: #68192E; margin: 50px 0 30px;">Métricas Analizadas</h3>
+        
+        <div class="stats-grid">
+            <div class="stat-box">
+                <div class="stat-label">Precio Promedio</div>
+                <div class="stat-description">Tarifa media por noche en cada barrio (€/noche)</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">Rating Promedio</div>
+                <div class="stat-description">Calificación media sobre 5 estrellas por barrio</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">Ocupación Estimada</div>
+                <div class="stat-description">Reviews por mes × 2.5 = noches reservadas estimadas</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">RevPAR</div>
+                <div class="stat-description">Revenue Per Available Room — métrica principal</div>
+            </div>
+        </div>
+        
+        <div class="insight-box">
+            <div class="insight-label">Fórmula RevPAR</div>
+            <p class="insight-text" style="font-size: 20px; font-weight: 600; color: #68192E; font-family: 'Playfair Display', serif;">
+                RevPAR = (Precio × Ocupación Estimada) ÷ 30 días
+            </p>
+        </div>
+    </div>
 
-Objetivos Específicos
-01 — Analizar rentabilidad por barrio
-Calcular el RevPAR (Revenue Per Available Room) como indicador principal de rentabilidad real por zona geográfica.
-02 — Identificar nivel de competencia
-Evaluar el número de propiedades existentes por zona para determinar el grado de saturación del mercado.
-03 — Evaluar calidad percibida
-Analizar ratings promedio por barrio como indicador de satisfacción del cliente y posicionamiento de calidad.
-04 — Generar recomendaciones estratégicas
-Proporcionar conclusiones útiles basadas en datos para fundamentar decisiones de inversión inmobiliaria.
-Metodología
-Proceso de
-análisis
-01
-Extracción
-Descarga de datos desde Inside Airbnb (dataset público)
-02
-Limpieza
-Normalización de precios, formatos y eliminación de outliers
-03
-Análisis
-Cálculo de métricas clave y agregación por barrio
-04
-Insights
-Interpretación de resultados y generación de recomendaciones
-Herramientas Utilizadas
-∑
-Google Sheets
-Análisis y cálculos estadísticos
-⌘
-Inside Airbnb
-Fuente de datos abiertos
-◊
-Looker Studio
-Visualización de datos
-Métricas Analizadas
-Precio Promedio
-Tarifa media por noche en cada barrio (€/noche)
-Rating Promedio
-Calificación media sobre 5 estrellas por barrio
-Ocupación Estimada
-Reviews por mes × 2.5 = noches reservadas estimadas
-RevPAR
-Revenue Per Available Room — métrica principal
-Fórmula RevPAR
-RevPAR = (Precio × Ocupación Estimada) ÷ 30 días
+    <!-- ANÁLISIS DE DATOS - PÁGINA 1 -->
+    <div class="page content-page">
+        <div class="content-header">
+            <div class="section-label">Análisis de Datos — Parte I</div>
+            <h2 class="section-title">
+                Distribución del<br>
+                <span class="accent">mercado</span>
+            </h2>
+            <div class="page-divider"></div>
+        </div>
+        
+        <p class="text-block">
+            El análisis de más de 8.300 propiedades revela una distribución altamente desigual del mercado, con concentración extrema en zonas tradicionales y oportunidades emergentes en barrios periféricos.
+        </p>
+        
+        <h3 style="font-family: 'Playfair Display', serif; font-size: 32px; color: #68192E; margin: 40px 0 25px;">Datos Clave por Barrio</h3>
+        
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Barrio</th>
+                    <th>Propiedades</th>
+                    <th>% Mercado</th>
+                    <th>Precio Promedio</th>
+                    <th>RevPAR</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="highlight-row">
+                    <td><strong>Centro</strong></td>
+                    <td class="number-cell">6.389</td>
+                    <td>77%</td>
+                    <td>130€</td>
+                    <td class="number-cell">12,1€</td>
+                </tr>
+                <tr>
+                    <td>Este</td>
+                    <td class="number-cell">989</td>
+                    <td>12%</td>
+                    <td>140€</td>
+                    <td class="number-cell">10,4€</td>
+                </tr>
+                <tr>
+                    <td>Carretera de Cádiz</td>
+                    <td class="number-cell">935</td>
+                    <td>11%</td>
+                    <td>106€</td>
+                    <td class="number-cell">10€</td>
+                </tr>
+                <tr class="highlight-row">
+                    <td><strong>Churriana</strong></td>
+                    <td class="number-cell">150</td>
+                    <td>1.8%</td>
+                    <td>171€</td>
+                    <td class="number-cell">12,4€</td>
+                </tr>
+                <tr>
+                    <td>Palma-Palmilla</td>
+                    <td class="number-cell">217</td>
+                    <td>2.6%</td>
+                    <td>137€</td>
+                    <td class="number-cell">10,5€</td>
+                </tr>
+                <tr>
+                    <td>Campanillas</td>
+                    <td class="number-cell">312</td>
+                    <td>3.8%</td>
+                    <td>192€</td>
+                    <td class="number-cell">10,1€</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <div class="insight-box">
+            <div class="insight-label">Concentración Extrema</div>
+            <p class="insight-text">
+                El <strong>77% de toda la oferta</strong> se concentra en Centro, creando una competencia feroz que erosiona los márgenes de rentabilidad pese a tener buen volumen de demanda.
+            </p>
+        </div>
+    </div>
 
-Análisis de Datos — Parte I
-Distribución del
-mercado
-El análisis de más de 8.300 propiedades revela una distribución altamente desigual del mercado, con concentración extrema en zonas tradicionales y oportunidades emergentes en barrios periféricos.
+    <!-- ANÁLISIS DE DATOS - PÁGINA 2 CON GRÁFICOS -->
+    <div class="page content-page">
+        <div class="content-header">
+            <div class="section-label">Análisis de Datos — Parte II</div>
+            <h2 class="section-title">
+                <span class="accent">Visualización</span><br>
+                de hallazgos
+            </h2>
+            <div class="page-divider"></div>
+        </div>
+        
+        <div class="chart-container">
+            <h3 class="chart-title">Top 5 Barrios por RevPAR</h3>
+            <div style="background: white; padding: 30px; border: 1px solid #E8E0D0;">
+                <img src="data:image/png;base64,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" alt="Top 5 Barrios por RevPAR" style="width: 100%; height: auto; display: block;">
+            </div>
+            <p class="chart-caption">
+                Churriana lidera con 12,4€ de RevPAR diario, superando incluso a Centro (12,1€) pese a tener 98% menos propiedades. Campanillas cierra el top 5 con 10,1€.
+            </p>
+        </div>
+        
+        <div class="highlight-section">
+            <h3>Insight Clave</h3>
+            <p>
+                Los barrios con <strong>menor saturación</strong> (Churriana, Palma-Palmilla) mantienen RevPAR competitivo con <strong>menos competencia directa</strong>, lo que se traduce en mayor facilidad para captar clientes y mejores márgenes operativos.
+            </p>
+        </div>
+    </div>
 
-Datos Clave por Barrio
-Barrio	Propiedades	% Mercado	Precio Promedio	RevPAR
-Centro	6.389	77%	130€	12,1€
-Este	989	12%	140€	10,4€
-Carretera de Cádiz	935	11%	106€	10€
-Churriana	150	1.8%	171€	12,4€
-Palma-Palmilla	217	2.6%	137€	10,5€
-Campanillas	312	3.8%	192€	10,1€
-Concentración Extrema
-El 77% de toda la oferta se concentra en Centro, creando una competencia feroz que erosiona los márgenes de rentabilidad pese a tener buen volumen de demanda.
+    <!-- ANÁLISIS DE DATOS - PÁGINA 3 -->
+    <div class="page content-page">
+        <div class="content-header">
+            <div class="section-label">Análisis de Datos — Parte III</div>
+            <h2 class="section-title">
+                Saturación vs<br>
+                <span class="accent">Precio</span>
+            </h2>
+            <div class="page-divider"></div>
+        </div>
+        
+        <div class="chart-container">
+            <h3 class="chart-title">Relación entre Número de Propiedades y Precio Promedio</h3>
+            <div style="background: white; padding: 30px; border: 1px solid #E8E0D0;">
+                <img src="data:image/png;base64,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" alt="Precio vs Saturación" style="width: 100%; height: auto; display: block;">
+            </div>
+            <p class="chart-caption">
+                Centro muestra la paradoja del mercado: alta saturación (6.389 propiedades) con precio promedio moderado (130€), mientras barrios como Campanillas tienen menos propiedades pero precios superiores (192€).
+            </p>
+        </div>
+        
+        <p class="text-block">
+            El análisis revela una <strong>correlación negativa</strong> entre saturación y rentabilidad: a mayor número de propiedades, menor capacidad de mantener precios premium debido a la competencia por precio.
+        </p>
+        
+        <div class="insight-box">
+            <div class="insight-label">Implicación Estratégica</div>
+            <p class="insight-text">
+                Los nuevos entrantes deben <strong>evitar competir en precio</strong> en zonas saturadas (Centro, Este) y buscar <strong>diferenciación por ubicación</strong> en barrios emergentes con menor oferta.
+            </p>
+        </div>
+    </div>
 
-Análisis de Datos — Parte II
-Visualización
-de hallazgos
-Top 5 Barrios por RevPAR
-Top 5 Barrios por RevPAR
-Churriana lidera con 12,4€ de RevPAR diario, superando incluso a Centro (12,1€) pese a tener 98% menos propiedades. Campanillas cierra el top 5 con 10,1€.
+    <!-- ANÁLISIS DE DATOS - PÁGINA 4 -->
+    <div class="page content-page">
+        <div class="content-header">
+            <div class="section-label">Análisis de Datos — Parte IV</div>
+            <h2 class="section-title">
+                RevPAR <span class="accent">completo</span><br>
+                por barrio
+            </h2>
+            <div class="page-divider"></div>
+        </div>
+        
+        <div class="chart-container">
+            <h3 class="chart-title">Ranking Completo de Rentabilidad (€/día disponible)</h3>
+            <div style="background: white; padding: 30px; border: 1px solid #E8E0D0;">
+                <img src="data:image/png;base64,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" alt="RevPAR por barrio completo" style="width: 100%; height: auto; display: block;">
+            </div>
+            <p class="chart-caption">
+                Visualización completa de los 11 barrios analizados. Churriana (12,4€) y Centro (12,1€) lideran, mientras Teatinos-Universidad (3€) muestra la menor rentabilidad del mercado.
+            </p>
+        </div>
+        
+        <h3 style="font-family: 'Playfair Display', serif; font-size: 28px; color: #68192E; margin: 40px 0 20px;">Análisis de Extremos</h3>
+        
+        <div class="stats-grid" style="grid-template-columns: 1fr 1fr;">
+            <div class="stat-box" style="border-color: #FF1493; border-width: 2px;">
+                <div class="stat-value">12,4€</div>
+                <div class="stat-label">Churriana</div>
+                <div class="stat-description">Mayor RevPAR — Zona emergente con alta rentabilidad</div>
+            </div>
+            <div class="stat-box" style="border-color: #999; border-width: 2px;">
+                <div class="stat-value" style="color: #999;">3€</div>
+                <div class="stat-label">Teatinos-Universidad</div>
+                <div class="stat-description">Menor RevPAR — Evitar para inversión turística</div>
+            </div>
+        </div>
+    </div>
 
-Insight Clave
-Los barrios con menor saturación (Churriana, Palma-Palmilla) mantienen RevPAR competitivo con menos competencia directa, lo que se traduce en mayor facilidad para captar clientes y mejores márgenes operativos.
+    <!-- HALLAZGOS CLAVE -->
+    <div class="page content-page">
+        <div class="content-header">
+            <div class="section-label">Hallazgos Clave</div>
+            <h2 class="section-title">
+                Cinco <span class="accent">insights</span><br>
+                accionables
+            </h2>
+            <div class="page-divider"></div>
+        </div>
+        
+        <div class="finding-card">
+            <div class="finding-number">01</div>
+            <h3 class="finding-title">Churriana destrona a Centro en rentabilidad real</h3>
+            <div class="finding-content">
+                <p><strong>RevPAR: 12,4€ vs 12,1€</strong></p>
+                <p>Con un 98% menos de competencia (150 vs 6.389 propiedades), Churriana ofrece mejor rentabilidad que la zona tradicional. Menor saturación significa menor presión competitiva en precios y mayor facilidad para mantener ocupación estable.</p>
+                <div class="finding-recommendation">
+                    → <strong>Recomendación:</strong> Priorizar barrios periféricos emergentes antes de que alcancen niveles de saturación críticos.
+                </div>
+            </div>
+        </div>
+        
+        <div class="finding-card alt">
+            <div class="finding-number">02</div>
+            <h3 class="finding-title">Centro es una trampa de volumen</h3>
+            <div class="finding-content">
+                <p><strong>Concentra el 77% del mercado (6.389 propiedades)</strong></p>
+                <p>Pese al alto volumen de demanda, la competencia extrema erosiona márgenes y dificulta la diferenciación. Solo ocupa la 2ª posición en rentabilidad, evidenciando que más oferta no equivale a mejor negocio.</p>
+                <div class="finding-recommendation">
+                    → <strong>Recomendación:</strong> Evitar Centro a menos que se pueda ofrecer diferenciación radical (diseño único, experiencias premium, nicho muy específico).
+                </div>
+            </div>
+        </div>
+        
+        <div class="finding-card">
+            <div class="finding-number">03</div>
+            <h3 class="finding-title">Teatinos-Universidad: peor zona del análisis</h3>
+            <div class="finding-content">
+                <p><strong>RevPAR: 3€/día — El más bajo de Málaga</strong></p>
+                <p>La proximidad al campus universitario no se traduce en rentabilidad turística. La demanda estudiantil (estancias largas, bajo presupuesto) es incompatible con el modelo de alquiler turístico de alta rotación.</p>
+                <div class="finding-recommendation">
+                    → <strong>Recomendación:</strong> Descartar zonas universitarias para Airbnb. Considerar solo para alquiler mensual tradicional.
+                </div>
+            </div>
+        </div>
+    </div>
 
-Análisis de Datos — Parte III
-Saturación vs
-Precio
-Relación entre Número de Propiedades y Precio Promedio
-Precio vs Saturación
-Centro muestra la paradoja del mercado: alta saturación (6.389 propiedades) con precio promedio moderado (130€), mientras barrios como Campanillas tienen menos propiedades pero precios superiores (192€).
+    <!-- HALLAZGOS CLAVE - CONTINUACIÓN -->
+    <div class="page content-page">
+        <div class="finding-card alt">
+            <div class="finding-number">04</div>
+            <h3 class="finding-title">Top 5 barrios representan solo el 10% de la oferta</h3>
+            <div class="finding-content">
+                <p><strong>Oportunidad de "océano azul" para inversores</strong></p>
+                <p>Los cinco barrios más rentables (Churriana, Centro, Palma-Palmilla, Este, Campanillas) concentran únicamente el 10% de las propiedades totales, evidenciando espacios con baja competencia y alta rentabilidad.</p>
+                <div class="finding-recommendation">
+                    → <strong>Recomendación:</strong> Aprovechar la oportunidad de ser pionero en zonas emergentes antes de que se saturen. Churriana y Palma-Palmilla son prioridades inmediatas.
+                </div>
+            </div>
+        </div>
+        
+        <div class="finding-card">
+            <div class="finding-number">05</div>
+            <h3 class="finding-title">Saturación mata rentabilidad</h3>
+            <div class="finding-content">
+                <p><strong>Correlación negativa entre número de propiedades y RevPAR</strong></p>
+                <p>A mayor saturación por barrio, menor RevPAR promedio. La competencia excesiva genera guerra de precios y erosión de márgenes. Los barrios con <500 propiedades mantienen rentabilidad superior.</p>
+                <div class="finding-recommendation">
+                    → <strong>Recomendación:</strong> Huir de las zonas "obvias" con alta concentración. Buscar mercados con demanda validada pero oferta limitada.
+                </div>
+            </div>
+        </div>
+        
+        <div class="conclusion-box">
+            <h3>Síntesis de Hallazgos</h3>
+            <p>
+                El análisis demuestra que <strong>calidad supera a cantidad</strong>: barrios con menor volumen pero mejor engagement (Churriana, Palma-Palmilla) generan mayor rentabilidad que zonas saturadas (Centro, Este). La estrategia ganadora es identificar mercados emergentes antes de su saturación crítica.
+            </p>
+        </div>
+    </div>
 
-El análisis revela una correlación negativa entre saturación y rentabilidad: a mayor número de propiedades, menor capacidad de mantener precios premium debido a la competencia por precio.
+    <!-- RECOMENDACIONES -->
+    <div class="page content-page">
+        <div class="content-header">
+            <div class="section-label">Recomendaciones Estratégicas</div>
+            <h2 class="section-title">
+                Plan de <span class="accent">acción</span><br>
+                por perfil
+            </h2>
+            <div class="page-divider"></div>
+        </div>
+        
+        <h3 style="font-family: 'Playfair Display', serif; font-size: 32px; color: #68192E; margin: 30px 0 25px;">Para Nuevos Inversores</h3>
+        
+        <ul class="content-list">
+            <li>
+                <div class="list-title">PRIORIDAD 1 — Churriana</div>
+                <div class="list-content">
+                    Mayor RevPAR (12,4€) con mínima competencia (150 propiedades). Zona emergente con alto potencial de crecimiento. <strong>Perfil ideal:</strong> inversores que buscan ROI rápido sin competir en mercados saturados. Barrera de entrada baja, demanda creciente.
+                </div>
+            </li>
+            <li>
+                <div class="list-title">PRIORIDAD 2 — Palma-Palmilla</div>
+                <div class="list-content">
+                    RevPAR sólido (10,5€) con equilibrio entre precio (137€) y ocupación. Mercado en desarrollo con 217 propiedades. <strong>Perfil ideal:</strong> inversores que buscan balance entre rentabilidad y estabilidad. Infraestructura en mejora continua.
+                </div>
+            </li>
+            <li>
+                <div class="list-title">PRIORIDAD 3 — Este</div>
+                <div class="list-content">
+                    RevPAR estable (10,4€) con infraestructura consolidada. Zona madura con demanda constante (989 propiedades). <strong>Perfil ideal:</strong> inversores conservadores que priorizan estabilidad sobre crecimiento explosivo.
+                </div>
+            </li>
+            <li>
+                <div class="list-title"><span style="color: #C9184A; font-weight: 900;">⚠️ EVITAR</span> — Centro</div>
+                <div class="list-content">
+                    A menos que se pueda diferenciar radicalmente (diseño único, experiencias premium, nicho específico), la competencia extrema (6.389 propiedades) hace muy difícil destacar. Solo recomendable para jugadores con capital significativo y propuesta de valor única.
+                </div>
+            </li>
+            <li>
+                <div class="list-title"><span style="color: #C9184A; font-weight: 900;">⚠️ EVITAR</span> — Teatinos-Universidad</div>
+                <div class="list-content">
+                    Peor RevPAR del análisis (3€/día). Demanda estudiantil no compensa versus turismo tradicional. Solo viable para alquiler mensual de largo plazo, no para modelo Airbnb de alta rotación.
+                </div>
+            </li>
+        </ul>
+    </div>
 
-Implicación Estratégica
-Los nuevos entrantes deben evitar competir en precio en zonas saturadas (Centro, Este) y buscar diferenciación por ubicación en barrios emergentes con menor oferta.
+    <!-- RECOMENDACIONES CONTINUACIÓN -->
+    <div class="page content-page">
+        <h3 style="font-family: 'Playfair Display', serif; font-size: 32px; color: #68192E; margin: 30px 0 25px;">Para Propietarios Actuales</h3>
+        
+        <div class="highlight-section">
+            <h3>Estrategias de Optimización</h3>
+            <p style="margin-bottom: 15px;">Si ya operas en zonas de alta competencia (Centro, Este), considera:</p>
+            <ul style="margin-left: 20px; line-height: 2;">
+                <li><strong>Diferenciación por experiencia:</strong> Tours locales, desayunos premium, check-in personalizado</li>
+                <li><strong>Nicho específico:</strong> Familias, nómadas digitales, retiros wellness</li>
+                <li><strong>Pricing dinámico:</strong> Ajustar precios según temporada y eventos locales</li>
+                <li><strong>Fotografía profesional:</strong> Fotos de calidad aumentan las reservas (más clics = más conversiones a clientes)</li>
+            </ul>
+        </div>
+        
+        <h3 style="font-family: 'Playfair Display', serif; font-size: 32px; color: #68192E; margin: 50px 0 25px;">Estrategia General</h3>
+        
+        <div class="conclusion-box">
+            <h3>Regla de Oro</h3>
+            <p>
+                <strong>"No compitas donde todos compiten. Encuentra espacios con demanda validada pero oferta limitada."</strong>
+            </p>
+            <p style="margin-top: 20px; font-size: 16px;">
+                El mercado de Málaga ofrece oportunidades claras en barrios periféricos que combinan: (1) rentabilidad comprobada, (2) baja saturación, (3) tendencia de crecimiento. La ventana de oportunidad es limitada — actuar antes de que estos mercados alcancen puntos críticos de saturación.
+            </p>
+        </div>
+        
+        <div class="insight-box" style="margin-top: 40px;">
+            <div class="insight-label">El Momento es Crítico</div>
+            <p class="insight-text">
+                Los barrios emergentes como Churriana están experimentando <strong>crecimiento acelerado</strong>. La ventaja competitiva de ser pionero se reduce con cada nueva propiedad que entra al mercado. <strong>Recomendación:</strong> Decisión e implementación en el primer semestre de 2026 para capturar máximo potencial.
+            </p>
+        </div>
+    </div>
 
-Análisis de Datos — Parte IV
-RevPAR completo
-por barrio
-Ranking Completo de Rentabilidad (€/día disponible)
-RevPAR por barrio completo
-Visualización completa de los 11 barrios analizados. Churriana (12,4€) y Centro (12,1€) lideran, mientras Teatinos-Universidad (3€) muestra la menor rentabilidad del mercado.
+    <!-- CONCLUSIONES FINALES -->
+    <div class="page content-page">
+        <div class="content-header">
+            <div class="section-label">Conclusiones</div>
+            <h2 class="section-title">
+                <span class="accent">Síntesis</span> y<br>
+                siguientes pasos
+            </h2>
+            <div class="page-divider"></div>
+        </div>
+        
+        <p class="text-block lead">
+            El análisis de más de 8.300 propiedades en Málaga revela un mercado con oportunidades claras para inversores estratégicos que busquen rentabilidad sobre volumen.
+        </p>
+        
+        <h3 style="font-family: 'Playfair Display', serif; font-size: 32px; color: #68192E; margin: 40px 0 25px;">Conclusiones Principales</h3>
+        
+        <div class="stats-grid" style="grid-template-columns: 1fr;">
+            <div class="stat-box">
+                <div class="stat-label" style="text-align: left; margin-bottom: 15px;">01 — Paradoja del Volumen</div>
+                <p style="text-align: left; font-size: 15px; line-height: 1.7;">
+                    <strong>Centro concentra el 77% del mercado pero solo es 2º en rentabilidad.</strong> Más oferta no equivale a mejor negocio cuando la competencia erosiona márgenes. Los datos evidencian que saturación y rentabilidad tienen correlación negativa.
+                </p>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label" style="text-align: left; margin-bottom: 15px;">02 — Emergencia de Periferias</div>
+                <p style="text-align: left; font-size: 15px; line-height: 1.7;">
+                    <strong>Churriana lidera rentabilidad (12,4€ RevPAR) con 98% menos competencia.</strong> Los barrios periféricos ofrecen el mejor equilibrio entre rentabilidad comprobada y espacio para crecer sin competencia extrema.
+                </p>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label" style="text-align: left; margin-bottom: 15px;">03 — Océano Azul Identificado</div>
+                <p style="text-align: left; font-size: 15px; line-height: 1.7;">
+                    <strong>Top 5 barrios = solo 10% de la oferta total.</strong> Existe amplio espacio para nuevos entrantes en mercados con demanda validada pero baja saturación. Ventana de oportunidad limitada temporalmente.
+                </p>
+            </div>
+        </div>
+        
+        <div class="highlight-section" style="margin-top: 50px;">
+            <h3>Implicación Estratégica Final</h3>
+            <p>
+                El mercado de alojamiento turístico en Málaga no es homogéneo. <strong>Las decisiones basadas en datos superan a las decisiones basadas en intuición.</strong> Churriana, Palma-Palmilla y Este emergen como las opciones de mayor potencial para nuevos inversores en 2026.
+            </p>
+        </div>
+    </div>
 
-Análisis de Extremos
-12,4€
-Churriana
-Mayor RevPAR — Zona emergente con alta rentabilidad
-3€
-Teatinos-Universidad
-Menor RevPAR — Evitar para inversión turística
-Hallazgos Clave
-Cinco insights
-accionables
-01
-Churriana destrona a Centro en rentabilidad real
-RevPAR: 12,4€ vs 12,1€
+    <!-- PRÓXIMOS PASOS -->
+    <div class="page content-page">
+        <h3 style="font-family: 'Playfair Display', serif; font-size: 36px; color: #68192E; margin: 40px 0 30px;">Próximos Pasos</h3>
+        
+        <ul class="content-list">
+            <li>
+                <div class="list-title">Validación en Terreno</div>
+                <div class="list-content">
+                    Visitar Churriana, Palma-Palmilla y Este para evaluar infraestructura, accesibilidad y ambiente. Confirmar que los datos cuantitativos se alinean con la realidad cualitativa del barrio.
+                </div>
+            </li>
+            <li>
+                <div class="list-title">Análisis Financiero Detallado</div>
+                <div class="list-content">
+                    Desarrollar modelo financiero específico con: costos de adquisición/renta, gastos operativos, proyección de ocupación, análisis de sensibilidad. Calcular rentabilidad y tiempo de recuperación de inversión por barrio seleccionado.
+                </div>
+            </li>
+            <li>
+                <div class="list-title">Benchmarking Competitivo</div>
+                <div class="list-content">
+                    Analizar las 10 propiedades con mejor rendimiento en cada barrio objetivo. Identificar factores diferenciadores: diseño, servicios, estrategia de precios, fotografía, descripciones.
+                </div>
+            </li>
+            <li>
+                <div class="list-title">Estrategia de Entrada</div>
+                <div class="list-content">
+                    Definir propuesta de valor única, público objetivo específico, estrategia de precios y plan de marketing pre-lanzamiento. Considerar lanzamiento suave para validar demanda antes de inversión total.
+                </div>
+            </li>
+        </ul>
+        
+        <div class="conclusion-box" style="margin-top: 50px;">
+            <h3>Nota Metodológica</h3>
+            <p>
+                Este análisis se basa en datos públicos de Inside Airbnb actualizados a septiembre 2025. Las conclusiones son válidas para el momento del análisis. Se recomienda actualizar datos trimestralmente dado el dinamismo del mercado turístico.
+            </p>
+        </div>
+    </div>
 
-Con un 98% menos de competencia (150 vs 6.389 propiedades), Churriana ofrece mejor rentabilidad que la zona tradicional. Menor saturación significa menor presión competitiva en precios y mayor facilidad para mantener ocupación estable.
-
-→ Recomendación: Priorizar barrios periféricos emergentes antes de que alcancen niveles de saturación críticos.
-02
-Centro es una trampa de volumen
-Concentra el 77% del mercado (6.389 propiedades)
-
-Pese al alto volumen de demanda, la competencia extrema erosiona márgenes y dificulta la diferenciación. Solo ocupa la 2ª posición en rentabilidad, evidenciando que más oferta no equivale a mejor negocio.
-
-→ Recomendación: Evitar Centro a menos que se pueda ofrecer diferenciación radical (diseño único, experiencias premium, nicho muy específico).
-03
-Teatinos-Universidad: peor zona del análisis
-RevPAR: 3€/día — El más bajo de Málaga
-
-La proximidad al campus universitario no se traduce en rentabilidad turística. La demanda estudiantil (estancias largas, bajo presupuesto) es incompatible con el modelo de alquiler turístico de alta rotación.
-
-→ Recomendación: Descartar zonas universitarias para Airbnb. Considerar solo para alquiler mensual tradicional.
-04
-Top 5 barrios representan solo el 10% de la oferta
-Oportunidad de "océano azul" para inversores
-
-Los cinco barrios más rentables (Churriana, Centro, Palma-Palmilla, Este, Campanillas) concentran únicamente el 10% de las propiedades totales, evidenciando espacios con baja competencia y alta rentabilidad.
-
-→ Recomendación: Aprovechar la oportunidad de ser pionero en zonas emergentes antes de que se saturen. Churriana y Palma-Palmilla son prioridades inmediatas.
-05
-Saturación mata rentabilidad
-Correlación negativa entre número de propiedades y RevPAR
-
-A mayor saturación por barrio, menor RevPAR promedio. La competencia excesiva genera guerra de precios y erosión de márgenes. Los barrios con <500 propiedades mantienen rentabilidad superior.
-
-→ Recomendación: Huir de las zonas "obvias" con alta concentración. Buscar mercados con demanda validada pero oferta limitada.
-Síntesis de Hallazgos
-El análisis demuestra que calidad supera a cantidad: barrios con menor volumen pero mejor engagement (Churriana, Palma-Palmilla) generan mayor rentabilidad que zonas saturadas (Centro, Este). La estrategia ganadora es identificar mercados emergentes antes de su saturación crítica.
-
-Recomendaciones Estratégicas
-Plan de acción
-por perfil
-Para Nuevos Inversores
-PRIORIDAD 1 — Churriana
-Mayor RevPAR (12,4€) con mínima competencia (150 propiedades). Zona emergente con alto potencial de crecimiento. Perfil ideal: inversores que buscan ROI rápido sin competir en mercados saturados. Barrera de entrada baja, demanda creciente.
-PRIORIDAD 2 — Palma-Palmilla
-RevPAR sólido (10,5€) con equilibrio entre precio (137€) y ocupación. Mercado en desarrollo con 217 propiedades. Perfil ideal: inversores que buscan balance entre rentabilidad y estabilidad. Infraestructura en mejora continua.
-PRIORIDAD 3 — Este
-RevPAR estable (10,4€) con infraestructura consolidada. Zona madura con demanda constante (989 propiedades). Perfil ideal: inversores conservadores que priorizan estabilidad sobre crecimiento explosivo.
-⚠️ EVITAR — Centro
-A menos que se pueda diferenciar radicalmente (diseño único, experiencias premium, nicho específico), la competencia extrema (6.389 propiedades) hace muy difícil destacar. Solo recomendable para jugadores con capital significativo y propuesta de valor única.
-⚠️ EVITAR — Teatinos-Universidad
-Peor RevPAR del análisis (3€/día). Demanda estudiantil no compensa versus turismo tradicional. Solo viable para alquiler mensual de largo plazo, no para modelo Airbnb de alta rotación.
-Para Propietarios Actuales
-Estrategias de Optimización
-Si ya operas en zonas de alta competencia (Centro, Este), considera:
-
-Diferenciación por experiencia: Tours locales, desayunos premium, check-in personalizado
-Nicho específico: Familias, nómadas digitales, retiros wellness
-Pricing dinámico: Ajustar precios según temporada y eventos locales
-Fotografía profesional: Fotos de calidad aumentan las reservas (más clics = más conversiones a clientes)
-Estrategia General
-Regla de Oro
-"No compitas donde todos compiten. Encuentra espacios con demanda validada pero oferta limitada."
-
-El mercado de Málaga ofrece oportunidades claras en barrios periféricos que combinan: (1) rentabilidad comprobada, (2) baja saturación, (3) tendencia de crecimiento. La ventana de oportunidad es limitada — actuar antes de que estos mercados alcancen puntos críticos de saturación.
-
-El Momento es Crítico
-Los barrios emergentes como Churriana están experimentando crecimiento acelerado. La ventaja competitiva de ser pionero se reduce con cada nueva propiedad que entra al mercado. Recomendación: Decisión e implementación en el primer semestre de 2026 para capturar máximo potencial.
-
-Conclusiones
-Síntesis y
-siguientes pasos
-El análisis de más de 8.300 propiedades en Málaga revela un mercado con oportunidades claras para inversores estratégicos que busquen rentabilidad sobre volumen.
-
-Conclusiones Principales
-01 — Paradoja del Volumen
-Centro concentra el 77% del mercado pero solo es 2º en rentabilidad. Más oferta no equivale a mejor negocio cuando la competencia erosiona márgenes. Los datos evidencian que saturación y rentabilidad tienen correlación negativa.
-
-02 — Emergencia de Periferias
-Churriana lidera rentabilidad (12,4€ RevPAR) con 98% menos competencia. Los barrios periféricos ofrecen el mejor equilibrio entre rentabilidad comprobada y espacio para crecer sin competencia extrema.
-
-03 — Océano Azul Identificado
-Top 5 barrios = solo 10% de la oferta total. Existe amplio espacio para nuevos entrantes en mercados con demanda validada pero baja saturación. Ventana de oportunidad limitada temporalmente.
-
-Implicación Estratégica Final
-El mercado de alojamiento turístico en Málaga no es homogéneo. Las decisiones basadas en datos superan a las decisiones basadas en intuición. Churriana, Palma-Palmilla y Este emergen como las opciones de mayor potencial para nuevos inversores en 2026.
-
-Próximos Pasos
-Validación en Terreno
-Visitar Churriana, Palma-Palmilla y Este para evaluar infraestructura, accesibilidad y ambiente. Confirmar que los datos cuantitativos se alinean con la realidad cualitativa del barrio.
-Análisis Financiero Detallado
-Desarrollar modelo financiero específico con: costos de adquisición/renta, gastos operativos, proyección de ocupación, análisis de sensibilidad. Calcular rentabilidad y tiempo de recuperación de inversión por barrio seleccionado.
-Benchmarking Competitivo
-Analizar las 10 propiedades con mejor rendimiento en cada barrio objetivo. Identificar factores diferenciadores: diseño, servicios, estrategia de precios, fotografía, descripciones.
-Estrategia de Entrada
-Definir propuesta de valor única, público objetivo específico, estrategia de precios y plan de marketing pre-lanzamiento. Considerar lanzamiento suave para validar demanda antes de inversión total.
-Nota Metodológica
-Este análisis se basa en datos públicos de Inside Airbnb actualizados a septiembre 2025. Las conclusiones son válidas para el momento del análisis. Se recomienda actualizar datos trimestralmente dado el dinamismo del mercado turístico.
-
-Gracias por tu
-atención
-Este análisis forma parte de mi portfolio de proyectos
-en analítica digital y toma de decisiones basada en datos
-
-NAZARET MORÓN
-Analista Digital | Granada, España
-LinkedIn: /nazaretmoron
-GitHub: /nazaretmoron
-Email: data.nazaret@gmail.com
+    <!-- PÁGINA FINAL DE CONTACTO -->
+    <div class="page final-page">
+        <h2 class="final-title">
+            Gracias por tu<br>
+            atención
+        </h2>
+        <p class="final-subtitle">
+            Este análisis forma parte de mi portfolio de proyectos<br>
+            en analítica digital y toma de decisiones basada en datos
+        </p>
+        
+        <div class="page-divider" style="background: #FFD700; margin: 40px auto;"></div>
+        
+        <div class="contact-info">
+            <div class="contact-item">
+                <strong>NAZARET MORÓN</strong>
+            </div>
+            <div class="contact-item" style="color: #F7E7CE; margin-top: 10px;">
+                Analista Digital | Granada, España
+            </div>
+            <div class="contact-item" style="margin-top: 30px;">
+                <a href="https://linkedin.com/in/nazaretmoron">LinkedIn: /nazaretmoron</a>
+            </div>
+            <div class="contact-item">
+                <a href="https://github.com/nazaretmoron">GitHub: /nazaretmoron</a>
+            </div>
+            <div class="contact-item">
+                <a href="mailto:data.nazaret@gmail.com">Email: data.nazaret@gmail.com</a>
+            </div>
+        </div>
+        
+        <div style="margin-top: 60px; padding-top: 30px; border-top: 1px solid rgba(255, 215, 0, 0.3);">
+            <p style="font-size: 14px; color: #E0AC9C;">
+                
