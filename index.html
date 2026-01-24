@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -132,9 +133,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             overflow: hidden;
         }
         
-        /* Stars removed for more professional look */
-        
-        /* Organic Circles - Softer */
         .blob {
             position: absolute;
             border-radius: 50%;
@@ -166,7 +164,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             left: 12%;
         }
         
-        /* Geometric Shape - Case Study Style */
         .hero-geometric {
             position: absolute;
             width: 600px;
@@ -362,9 +359,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             50% { transform: scale(1.04); opacity: 0.95; }
         }
         
-        /* Floating badges removed for cleaner look */
-        
-        /* EXPERTISE BANNER - Case Study Style */
+        /* EXPERTISE BANNER */
         .expertise-banner {
             background: var(--oro);
             padding: 22px 60px;
@@ -400,7 +395,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             font-size: 26px;
         }
         
-        /* SECTIONS - Editorial Style */
+        /* SECTIONS */
         section {
             padding: 120px 60px;
         }
@@ -453,182 +448,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             font-weight: 400;
         }
         
-        /* ABOUT SECTION - Editorial Grid */
-        .about {
-            background: var(--blanco);
-        }
-        
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1.5fr;
-            gap: 80px;
-            align-items: start;
-        }
-        
-        .about-image-wrapper {
-            position: relative;
-        }
-        
-        .about-photo {
-            width: 100%;
-            border-radius: 20px;
-            box-shadow: 0 25px 60px rgba(0,0,0,0.08);
-        }
-        
-        .about-deco {
-            position: absolute;
-            font-size: 60px;
-            opacity: 0.35;
-            color: var(--oro);
-        }
-        
-        .about-deco-1 {
-            top: -25px;
-            right: -25px;
-        }
-        
-        .about-deco-2 {
-            bottom: -25px;
-            left: -25px;
-            color: var(--rosa-neon);
-        }
-        
-        .about-text {
-            font-size: 17px;
-            line-height: 1.85;
-            color: var(--negro);
-        }
-        
-        .about-text p {
-            margin-bottom: 28px;
-        }
-        
-        .about-text strong {
-            color: var(--burdeos);
-            font-weight: 700;
-        }
-        
-        .lead-text {
-            font-size: 19px;
-            font-weight: 500;
-            color: var(--burdeos);
-            line-height: 1.7;
-            margin-bottom: 35px;
-        }
-        
-        
-        /* EXPERIENCE TIMELINE */
-        .experience-timeline {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            margin-top: 25px;
-        }
-        
-        .experience-item {
-            padding: 25px 30px;
-            background: white;
-            border-radius: 12px;
-            border-left: 4px solid var(--rosa-neon);
-            transition: all 0.3s;
-        }
-        
-        .experience-item:hover {
-            transform: translateX(8px);
-            box-shadow: 0 8px 25px rgba(255, 20, 147, 0.1);
-        }
-        
-        .exp-period {
-            font-size: 13px;
-            color: var(--oro);
-            font-weight: 700;
-            margin-bottom: 8px;
-            letter-spacing: 0.5px;
-        }
-        
-        .exp-role {
-            font-size: 17px;
-            font-weight: 700;
-            color: var(--burdeos);
-            margin-bottom: 5px;
-        }
-        
-        .exp-company {
-            font-size: 15px;
-            color: var(--negro);
-            font-weight: 500;
-        }
-        
-        /* SKILLS SECTION - Case Study Card Style */
-        .skills-section {
-            margin-top: 60px;
-        }
-        
-        .skills-section h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 32px;
-            font-weight: 700;
-            color: var(--burdeos);
-            margin-bottom: 40px;
-        }
-        
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 28px;
-        }
-        
-        .skill-card {
-            padding: 35px;
-            background: var(--fondo-crema);
-            border-radius: 16px;
-            border: 2px solid var(--champagne);
-            transition: all 0.35s;
-            position: relative;
-        }
-        
-        .skill-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 5px;
-            height: 100%;
-            background: var(--rosa-neon);
-            border-radius: 16px 0 0 16px;
-            transform: scaleY(0);
-            transition: transform 0.35s;
-        }
-        
-        .skill-card:hover {
-            border-color: var(--rosa-neon);
-            transform: translateX(10px);
-            box-shadow: 0 15px 40px rgba(255, 20, 147, 0.12);
-            background: white;
-        }
-        
-        .skill-card:hover::before {
-            transform: scaleY(1);
-        }
-        
-        .skill-card h4 {
-            font-size: 19px;
-            font-weight: 800;
-            color: var(--burdeos);
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .skill-card p {
-            font-size: 15px;
-            color: var(--negro);
-            margin: 0;
-            line-height: 1.7;
-        }
-        
-        /* PROJECTS SECTION - Editorial Numbers */
+        /* PROJECTS SECTION */
         .projects {
             background: var(--fondo-crema);
         }
@@ -659,6 +479,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             height: 320px;
             background: linear-gradient(135deg, var(--burdeos) 0%, var(--rosa-neon) 100%);
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             position: relative;
@@ -677,6 +498,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         @keyframes rotateGeo {
             from { transform: rotate(0deg); }
             to { transform: rotate(360deg); }
+        }
+        
+        /* VERSIÓN CON ICONO */
+        .project-icon {
+            font-size: 60px;
+            margin-bottom: 20px;
+            opacity: 0.4;
+            position: relative;
+            z-index: 1;
         }
         
         .project-number {
@@ -751,42 +581,243 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             gap: 16px;
         }
         
+        /* RESOURCES SECTION (NUEVO) */
+        .resources {
+            background: var(--blanco);
+        }
         
-        /* NO PROJECTS MESSAGE */
-        .no-projects-message {
-            grid-column: 1 / -1;
-            text-align: center;
-            padding: 80px 40px;
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 35px;
+            margin-top: 60px;
+        }
+        
+        .resource-card {
+            background: var(--fondo-crema);
+            padding: 40px;
+            border-radius: 16px;
+            border: 2px solid var(--champagne);
+            transition: all 0.3s;
+            position: relative;
+        }
+        
+        .resource-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: var(--oro);
+            border-radius: 16px 0 0 16px;
+            transform: scaleY(0);
+            transition: transform 0.3s;
+        }
+        
+        .resource-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(255, 215, 0, 0.15);
+            border-color: var(--oro);
             background: white;
-            border-radius: 20px;
-            border: 2px dashed var(--champagne);
         }
         
-        .coming-soon-icon {
-            font-size: 80px;
-            margin-bottom: 25px;
-            animation: float 3s ease-in-out infinite;
+        .resource-card:hover::before {
+            transform: scaleY(1);
         }
         
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
+        .resource-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
         }
         
-        .no-projects-message h3 {
+        .resource-card h3 {
             font-family: 'Playfair Display', serif;
-            font-size: 32px;
+            font-size: 24px;
             color: var(--burdeos);
             margin-bottom: 15px;
+            font-weight: 700;
         }
         
-        .no-projects-message p {
-            font-size: 17px;
+        .resource-card p {
+            font-size: 15px;
+            line-height: 1.7;
             color: var(--negro);
-            opacity: 0.7;
+            margin-bottom: 25px;
         }
         
-        /* CONTACT SECTION - Editorial Dark */
+        .btn-download {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 28px;
+            background: var(--oro);
+            color: var(--burdeos);
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+        
+        .btn-download:hover {
+            background: var(--burdeos);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(104, 25, 46, 0.25);
+        }
+        
+        /* SKILLS SECTION */
+        .skills {
+            background: var(--fondo-crema);
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 28px;
+        }
+        
+        .skill-card {
+            padding: 35px;
+            background: white;
+            border-radius: 16px;
+            border: 2px solid var(--champagne);
+            transition: all 0.35s;
+            position: relative;
+        }
+        
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: var(--rosa-neon);
+            border-radius: 16px 0 0 16px;
+            transform: scaleY(0);
+            transition: transform 0.35s;
+        }
+        
+        .skill-card:hover {
+            border-color: var(--rosa-neon);
+            transform: translateX(10px);
+            box-shadow: 0 15px 40px rgba(255, 20, 147, 0.12);
+        }
+        
+        .skill-card:hover::before {
+            transform: scaleY(1);
+        }
+        
+        .skill-card h4 {
+            font-size: 19px;
+            font-weight: 800;
+            color: var(--burdeos);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .skill-card p {
+            font-size: 15px;
+            color: var(--negro);
+            margin: 0;
+            line-height: 1.7;
+        }
+        
+        /* ABOUT SECTION - COMPACTA */
+        .about {
+            background: var(--blanco);
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 80px;
+            align-items: start;
+        }
+        
+        .about-image-wrapper {
+            position: relative;
+        }
+        
+        .about-photo {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.08);
+        }
+        
+        .about-deco {
+            position: absolute;
+            font-size: 60px;
+            opacity: 0.35;
+            color: var(--oro);
+        }
+        
+        .about-deco-1 {
+            top: -25px;
+            right: -25px;
+        }
+        
+        .about-deco-2 {
+            bottom: -25px;
+            left: -25px;
+            color: var(--rosa-neon);
+        }
+        
+        .about-text {
+            font-size: 17px;
+            line-height: 1.85;
+            color: var(--negro);
+        }
+        
+        .about-text p {
+            margin-bottom: 28px;
+        }
+        
+        .about-text strong {
+            color: var(--burdeos);
+            font-weight: 700;
+        }
+        
+        .lead-text {
+            font-size: 19px;
+            font-weight: 500;
+            color: var(--burdeos);
+            line-height: 1.7;
+            margin-bottom: 35px;
+        }
+        
+        /* Botón "Leer más" */
+        .read-more-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--rosa-neon);
+            font-weight: 700;
+            font-size: 15px;
+            cursor: pointer;
+            transition: gap 0.3s;
+            margin-top: 15px;
+        }
+        
+        .read-more-btn:hover {
+            gap: 12px;
+        }
+        
+        .more-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out;
+        }
+        
+        .more-content.expanded {
+            max-height: 1000px;
+        }
+        
+        /* CONTACT SECTION */
         .contact {
             background: var(--burdeos);
             color: white;
@@ -804,7 +835,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             animation: rotateGeo 50s linear infinite;
         }
         
-        /* Geometric decoration */
         .contact-geometric {
             position: absolute;
             width: 500px;
@@ -892,7 +922,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             transform: translateY(-3px);
         }
         
-        /* FOOTER - Editorial */
+        /* FOOTER */
         footer {
             padding: 50px 60px;
             background: var(--burdeos-dark);
@@ -975,7 +1005,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 height: 390px;
             }
             
-            .projects-grid {
+            .projects-grid, .resources-grid {
                 grid-template-columns: 1fr;
             }
             
@@ -999,6 +1029,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-56X6LDHF"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
+
     <!-- NAVIGATION -->
     <nav>
         <div class="nav-container">
@@ -1007,9 +1038,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <span class="logo-text">Nazaret</span>
             </a>
             <ul class="nav-links">
-                <li><a href="#sobre-mi">Sobre Mí</a></li>
                 <li><a href="#proyectos">Proyectos</a></li>
-                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#recursos">Recursos</a></li>
+                <li><a href="#sobre-mi">Sobre Mí</a></li>
                 <li><a href="#contacto" class="nav-cta">Contacto</a></li>
             </ul>
         </div>
@@ -1017,14 +1048,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <!-- HERO SECTION -->
     <section class="hero" id="inicio">
-        <!-- Stars removed for professional appearance -->
-        
-        <!-- Organic Blobs -->
         <div class="blob blob-1"></div>
         <div class="blob blob-2"></div>
         <div class="blob blob-3"></div>
-        
-        <!-- Geometric Decoration -->
         <div class="hero-geometric"></div>
         
         <div class="hero-content">
@@ -1036,7 +1062,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <span class="fancy">decisiones</span>
                 </h1>
                 <p class="hero-description">
-                    Transformo datos complejos en <strong>insights accionables</strong> que impulsan decisiones estratégicas. Especializada en analítica web, CRO y visualización de datos con impacto real en el negocio.
+                    Transformo datos complejos en <strong>conclusiones útiles</strong> que impulsan decisiones estratégicas. Especializada en analítica web, CRO y visualización de datos con impacto real en el negocio.
                 </p>
                 <div class="hero-buttons">
                     <a href="#proyectos" class="btn btn-primary">
@@ -1049,7 +1075,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 </div>
                 <div class="hero-stats">
                     <div class="stat-item">
-                        <div class="stat-number" id="projectCount">0</div>
+                        <div class="stat-number">1+</div>
                         <div class="stat-label">Proyectos Completados</div>
                     </div>
                     <div class="stat-item">
@@ -1131,46 +1157,81 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
     </div>
 
-   <!-- SECCIÓN SOBRE MÍ -->
-    <section class="about" id="sobre-mi">
+    <!-- SECCIÓN PROYECTOS (MOVIDA ARRIBA) -->
+    <section class="projects" id="proyectos">
         <div class="section-container">
             <div class="section-header">
-                <span class="section-label">SOBRE MÍ</span>
+                <span class="section-label">PORTFOLIO</span>
                 <h2 class="section-title">
-                    ¿Quién <span class="accent">soy?</span>
+                    Proyectos <span class="accent">Destacados</span>
                 </h2>
                 <div class="page-divider"></div>
-                <p class="section-subtitle destacado">
-                    Analista digital junior con experiencia en turismo y una pasión por convertir números en historias que generan impacto real.
+                <p class="section-subtitle">
+                    Una selección de proyectos que demuestran mi capacidad para extraer conclusiones valiosas de datos complejos y proponer soluciones estratégicas accionables.
                 </p>
             </div>
             
-            <div class="about-content">
-                <div class="about-image-wrapper">
-                    <img src="1767631640565.jpg" alt="Sobre Nazaret" class="about-photo">
-                    <div class="about-deco about-deco-1">✦</div>
-                    <div class="about-deco about-deco-2">✦</div>
-                </div>
-                
-                <div class="about-text">
-                    <p class="lead-text">
-                        Soy Nazaret Morón, analista digital junior con sólida experiencia en el sector turismo. He trabajado en hoteles y OTAs gestionando reservas multicanal, optimizando funnels de conversión y apoyando decisiones de Revenue Management con datos.
-                    </p>
-                    <p>
-                        Mi trayectoria profesional en <strong>Barceló Hotel Group</strong> (Praga) y <strong>Heritage Queenstown</strong> (Nueva Zelanda) me ha permitido entender profundamente el customer journey desde la perspectiva del usuario, trabajando directamente en puntos críticos de conversión.
-                    </p>
-                    <p>
-                        Recientemente completé un <strong>Máster en Analítica Digital y CRO</strong> en MOA Institute, donde consolidé habilidades técnicas en GA4, SQL, BigQuery, análisis de funnels y visualización de datos con Looker Studio.
-                    </p>
-                    <p>
-                        Desde Granada, España, busco oportunidades donde pueda combinar mi experiencia operativa en turismo con mis nuevas capacidades analíticas para <strong>generar impacto medible en conversión e ingresos</strong>.
-                    </p>
+            <div class="projects-grid" id="projectsGrid">
+                <!-- PROYECTO 1: Airbnb (CON ICONO) -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">📊</div>
+                        <div class="project-number">01</div>
+                    </div>
+                    <div class="project-content">
+                        <span class="project-label">ANÁLISIS DE DATOS</span>
+                        <h3>Análisis RevPAR Airbnb Málaga</h3>
+                        <p>Análisis de +8.300 propiedades para identificar los barrios más rentables. Churriana supera al Centro en rentabilidad (12,4€ vs 12,1€) con 98% menos competencia.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Google Sheets</span>
+                            <span class="project-tag">Looker Studio</span>
+                            <span class="project-tag">RevPAR</span>
+                        </div>
+                        <a href="proyectos/analisis-revpar-airbnb/" class="project-link">
+                            Ver Case Study
+                            <span>→</span>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SECCIÓN HABILIDADES (SEPARADA Y CENTRADA) -->
+    <!-- SECCIÓN RECURSOS (NUEVA) -->
+    <section class="resources" id="recursos">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-label">RECURSOS GRATUITOS</span>
+                <h2 class="section-title">
+                    Recursos <span class="accent">Útiles</span>
+                </h2>
+                <div class="page-divider"></div>
+                <p class="section-subtitle">
+                    Herramientas y guías prácticas que comparto para ayudar a otros analistas y profesionales digitales.
+                </p>
+            </div>
+            
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <div class="resource-icon">📋</div>
+                    <h3>Checklist: Implementación GA4</h3>
+                    <p>Checklist completo de 20 puntos para implementar correctamente Google Analytics 4, incluyendo configuración básica, RGPD y validación.</p>
+                    <a href="#" class="btn-download" onclick="alert('Próximamente disponible para descarga'); return false;">
+                        ⬇️ Descargar PDF
+                    </a>
+                </div>
+                
+                <!-- Espacio para futuros recursos -->
+                <div class="resource-card" style="opacity: 0.5; border-style: dashed;">
+                    <div class="resource-icon">🎯</div>
+                    <h3>Próximamente</h3>
+                    <p>Más recursos y guías prácticas en camino...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN HABILIDADES -->
     <section class="skills">
         <div class="section-container">
             <div class="section-header">
@@ -1202,41 +1263,48 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
     </section>
 
-    <!-- SECCIÓN PROYECTOS -->
-    <section class="projects" id="proyectos">
+    <!-- SECCIÓN SOBRE MÍ (COMPACTA) -->
+    <section class="about" id="sobre-mi">
         <div class="section-container">
             <div class="section-header">
-                <span class="section-label">PORTFOLIO</span>
+                <span class="section-label">SOBRE MÍ</span>
                 <h2 class="section-title">
-                    Proyectos <span class="accent">Destacados</span>
+                    ¿Quién <span class="accent">soy?</span>
                 </h2>
                 <div class="page-divider"></div>
-                <p class="section-subtitle">
-                    Una selección de proyectos que demuestran mi capacidad para extraer insights valiosos de datos complejos y proponer soluciones estratégicas accionables.
-                </p>
             </div>
             
-           <div class="projects-grid" id="projectsGrid">
-    <div class="project-card">
-        <div class="project-header">
-            <div class="project-number">01</div>
-        </div>
-        <div class="project-content">
-            <span class="project-label">ANÁLISIS DE DATOS</span>
-            <h3>Análisis RevPAR Airbnb Málaga</h3>
-            <p>Análisis de +8.300 propiedades para identificar los barrios más rentables. Churriana supera al Centro en rentabilidad (12,4€ vs 12,1€) con 98% menos competencia.</p>
-            <div class="project-tags">
-                <span class="project-tag">Google Sheets</span>
-                <span class="project-tag">Looker Studio</span>
-                <span class="project-tag">RevPAR</span>
+            <div class="about-content">
+                <div class="about-image-wrapper">
+                    <img src="1767631640565.jpg" alt="Sobre Nazaret" class="about-photo">
+                    <div class="about-deco about-deco-1">✦</div>
+                    <div class="about-deco about-deco-2">✦</div>
+                </div>
+                
+                <div class="about-text">
+                    <p class="lead-text">
+                        Analista digital junior con experiencia en turismo, especializada en convertir datos en decisiones estratégicas medibles.
+                    </p>
+                    <p>
+                        Mi trayectoria profesional en <strong>Barceló Hotel Group</strong> (Praga) y <strong>Heritage Queenstown</strong> (Nueva Zelanda) me permitió entender profundamente el customer journey desde la perspectiva operativa, trabajando directamente en puntos críticos de conversión en hoteles y OTAs.
+                    </p>
+                    
+                    <!-- Contenido expandible -->
+                    <div class="more-content" id="moreAbout">
+                        <p>
+                            Recientemente completé un <strong>Máster en Analítica Digital y CRO</strong> en MOA Institute, donde consolidé habilidades técnicas en GA4, SQL, BigQuery, análisis de funnels y visualización de datos con Looker Studio.
+                        </p>
+                        <p>
+                            Desde Granada, España, busco oportunidades donde pueda combinar mi experiencia operativa en turismo con mis nuevas capacidades analíticas para <strong>generar impacto medible en conversión e ingresos</strong>.
+                        </p>
+                    </div>
+                    
+                    <div class="read-more-btn" onclick="toggleAbout()">
+                        <span id="readMoreText">Leer más</span>
+                        <span id="readMoreArrow">→</span>
+                    </div>
+                </div>
             </div>
-            <a href="proyectos/analisis-revpar-airbnb/" class="project-link">
-                Ver Case Study
-                <span>→</span>
-            </a>
-        </div>
-    </div>
-</div>
         </div>
     </section>
 
@@ -1268,17 +1336,24 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </footer>
 
     <script>
-        function updateProjectCount() {
-            const projectCards = document.querySelectorAll('.project-card');
-            const projectCount = projectCards.length;
-            const counter = document.getElementById('projectCount');
-            if (counter) {
-                counter.textContent = projectCount > 0 ? projectCount + '+' : '0';
+        // Toggle "Leer más" en Sobre Mí
+        function toggleAbout() {
+            const moreContent = document.getElementById('moreAbout');
+            const readMoreText = document.getElementById('readMoreText');
+            const readMoreArrow = document.getElementById('readMoreArrow');
+            
+            if (moreContent.classList.contains('expanded')) {
+                moreContent.classList.remove('expanded');
+                readMoreText.textContent = 'Leer más';
+                readMoreArrow.textContent = '→';
+            } else {
+                moreContent.classList.add('expanded');
+                readMoreText.textContent = 'Leer menos';
+                readMoreArrow.textContent = '↑';
             }
         }
 
-        updateProjectCount();
-
+        // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -1292,6 +1367,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             });
         });
 
+        // Animaciones al hacer scroll
         const observerOptions = {
             threshold: 0.15,
             rootMargin: '0px 0px -80px 0px'
@@ -1306,7 +1382,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             });
         }, observerOptions);
 
-        document.querySelectorAll('.project-card, .skill-card').forEach((el, index) => {
+        document.querySelectorAll('.project-card, .skill-card, .resource-card').forEach((el, index) => {
             el.style.opacity = '0';
             el.style.transform = 'translateY(40px)';
             el.style.transition = `all 0.7s ease-out ${index * 0.12}s`;
