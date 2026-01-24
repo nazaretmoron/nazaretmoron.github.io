@@ -7,6 +7,93 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Work+Sans:wght@300;400;500;600;700&display=swap');
         
+        /* NAVIGATION - Copiada de tu web */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(253, 252, 250, 0.98);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.03);
+        }
+        
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 24px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            text-decoration: none;
+        }
+        
+        .logo-initial {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #68192E, #FF1493);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 800;
+            font-size: 22px;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 24px;
+            color: #2B2B2B;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 45px;
+            list-style: none;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #2B2B2B;
+            font-weight: 600;
+            font-size: 15px;
+            transition: color 0.3s;
+            letter-spacing: 0.3px;
+        }
+        
+        .nav-links a:hover {
+            color: #FF1493;
+        }
+        
+        .nav-cta {
+            padding: 13px 30px;
+            background: #68192E;
+            color: white !important;
+            border-radius: 50px;
+            transition: all 0.3s;
+        }
+        
+        .nav-cta:hover {
+            background: #FF1493;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 20, 147, 0.3);
+        }
+        
+        /* Ajuste para que el contenido no quede detrás del nav */
+        body {
+            padding-top: 96px;
+        }
+        
         * {
             margin: 0;
             padding: 0;
@@ -722,6 +809,22 @@
 </head>
 <body>
 
+    <!-- NAVIGATION -->
+    <nav>
+        <div class="nav-container">
+            <a href="../../index.html#inicio" class="logo">
+                <div class="logo-initial">N</div>
+                <span class="logo-text">Nazaret</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="../../index.html#sobre-mi">Sobre Mí</a></li>
+                <li><a href="../../index.html#proyectos">Proyectos</a></li>
+                <li><a href="../../index.html#servicios">Servicios</a></li>
+                <li><a href="../../index.html#contacto" class="nav-cta">Contacto</a></li>
+            </ul>
+        </div>
+    </nav>
+
     <!-- PORTADA -->
     <div class="page cover">
         <div class="cover-geometric"></div>
@@ -1435,6 +1538,19 @@
             </div>
         </div>
         
-        <div style="margin-top: 60px; padding-top: 30px; border-top: 1px solid rgba(255, 215, 0, 0.3);">
+        <div style="margin-top: 60px;        <div style="margin-top: 60px; padding-top: 30px; border-top: 1px solid rgba(255, 215, 0, 0.3);">
             <p style="font-size: 14px; color: #E0AC9C;">
-                
+                NAZARET MORÓN — PORTFOLIO 2026
+            </p>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer style="padding: 50px 60px; background: #3D0E1A; text-align: center;">
+        <p style="color: #F7E7CE; opacity: 0.75; font-size: 14px; font-weight: 500; letter-spacing: 0.5px;">
+            © 2026 Nazaret Morón · Analista Digital · Granada, España · Hecho con datos y ✨
+        </p>
+    </footer>
+
+</body>
+</html>
