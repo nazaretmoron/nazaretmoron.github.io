@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -95,13 +94,30 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             align-items: center;
         }
         
+        /* ✨ NUEVO: Links con subrayado animado */
         .nav-links a {
             text-decoration: none;
             color: var(--negro);
             font-weight: 600;
             font-size: 15px;
-            transition: color 0.3s;
             letter-spacing: 0.3px;
+            position: relative;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:not(.nav-cta)::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--rosa-neon);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:not(.nav-cta):hover::after {
+            width: 100%;
         }
         
         .nav-links a:hover {
@@ -260,7 +276,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             border-radius: 50px;
             font-weight: 700;
             text-decoration: none;
-            transition: all 0.3s;
+            transition: all 0.3s ease;
             font-size: 15px;
             display: inline-flex;
             align-items: center;
@@ -268,6 +284,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             letter-spacing: 0.3px;
         }
         
+        /* ✨ MEJORADO: Botones con más elevación */
         .btn-primary {
             background: var(--rosa-neon);
             color: white;
@@ -276,8 +293,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         
         .btn-primary:hover {
             background: var(--rosa-intenso);
-            transform: translateY(-3px);
-            box-shadow: 0 16px 45px rgba(255, 20, 147, 0.35);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(255, 20, 147, 0.4);
         }
         
         .btn-secondary {
@@ -290,7 +307,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         .btn-secondary:hover {
             background: var(--burdeos);
             color: white;
-            transform: translateY(-3px);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(104, 25, 46, 0.25);
         }
         
         .hero-stats {
@@ -460,19 +478,25 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             margin-top: 70px;
         }
         
+        /* ✨ NUEVO: Cuadro completo clickable + animaciones mejoradas */
         .project-card {
             background: white;
             border-radius: 20px;
             overflow: hidden;
             box-shadow: 0 15px 45px rgba(0,0,0,0.06);
-            transition: all 0.4s;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             cursor: pointer;
             border: 1px solid rgba(104, 25, 46, 0.08);
+            border-top: 3px solid transparent;
+            text-decoration: none;
+            color: inherit;
+            display: block;
         }
         
         .project-card:hover {
-            transform: translateY(-15px);
-            box-shadow: 0 30px 70px rgba(0,0,0,0.1);
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 35px 80px rgba(0,0,0,0.15);
+            border-top-color: var(--rosa-neon);
         }
         
         .project-header {
@@ -500,15 +524,22 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             to { transform: rotate(360deg); }
         }
         
-        /* VERSIÓN CON ICONO */
+        /* ✨ NUEVO: Icono con rotación sutil en hover */
         .project-icon {
             font-size: 60px;
             margin-bottom: 20px;
             opacity: 0.4;
             position: relative;
             z-index: 1;
+            transition: all 0.4s ease;
         }
         
+        .project-card:hover .project-icon {
+            opacity: 0.7;
+            transform: rotate(10deg) scale(1.1);
+        }
+        
+        /* ✨ NUEVO: Número se ilumina en hover */
         .project-number {
             font-family: 'Playfair Display', serif;
             font-size: 160px;
@@ -517,6 +548,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             position: relative;
             z-index: 1;
             line-height: 1;
+            transition: all 0.4s ease;
+        }
+        
+        .project-card:hover .project-number {
+            color: rgba(255, 255, 255, 0.35);
+            text-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
         }
         
         .project-content {
@@ -556,6 +593,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             margin-bottom: 25px;
         }
         
+        /* ✨ NUEVO: Tags cambian de color en hover */
         .project-tag {
             padding: 9px 18px;
             background: var(--fondo-crema);
@@ -564,6 +602,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             color: var(--burdeos);
             font-weight: 700;
             border: 1.5px solid var(--champagne);
+            transition: all 0.3s ease;
+        }
+        
+        .project-card:hover .project-tag {
+            background: #FFE5F0;
+            border-color: var(--rosa-neon);
+            color: var(--rosa-intenso);
         }
         
         .project-link {
@@ -577,11 +622,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             transition: gap 0.3s;
         }
         
-        .project-link:hover {
+        .project-card:hover .project-link {
             gap: 16px;
         }
         
-        /* RESOURCES SECTION (NUEVO) */
+        /* RESOURCES SECTION */
         .resources {
             background: var(--blanco);
         }
@@ -663,7 +708,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         .btn-download:hover {
             background: var(--burdeos);
             color: white;
-            transform: translateY(-2px);
+            transform: translateY(-3px);
             box-shadow: 0 8px 25px rgba(104, 25, 46, 0.25);
         }
         
@@ -727,7 +772,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             line-height: 1.7;
         }
         
-        /* ABOUT SECTION - COMPACTA */
+        /* ABOUT SECTION */
         .about {
             background: var(--blanco);
         }
@@ -790,7 +835,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             margin-bottom: 35px;
         }
         
-        /* Botón "Leer más" */
+        /* ✨ NUEVO: "Leer más" con subrayado animado */
         .read-more-btn {
             display: inline-flex;
             align-items: center;
@@ -799,8 +844,24 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             font-weight: 700;
             font-size: 15px;
             cursor: pointer;
-            transition: gap 0.3s;
             margin-top: 15px;
+            position: relative;
+            padding-bottom: 3px;
+        }
+        
+        .read-more-btn::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--rosa-neon);
+            transition: width 0.3s ease;
+        }
+        
+        .read-more-btn:hover::after {
+            width: calc(100% - 25px);
         }
         
         .read-more-btn:hover {
@@ -935,6 +996,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             font-size: 14px;
             font-weight: 500;
             letter-spacing: 0.5px;
+        }
+        
+        /* ✨ NUEVO: Animaciones fade-in al scroll más suaves */
+        .fade-in-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        
+        .fade-in-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
         
         /* RESPONSIVE */
@@ -1157,10 +1230,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
     </div>
 
-    <!-- SECCIÓN PROYECTOS (MOVIDA ARRIBA) -->
+    <!-- SECCIÓN PROYECTOS -->
     <section class="projects" id="proyectos">
         <div class="section-container">
-            <div class="section-header">
+            <div class="section-header fade-in-scroll">
                 <span class="section-label">PORTFOLIO</span>
                 <h2 class="section-title">
                     Proyectos <span class="accent">Destacados</span>
@@ -1172,8 +1245,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
             
             <div class="projects-grid" id="projectsGrid">
-                <!-- PROYECTO 1: Airbnb (CON ICONO) -->
-                <div class="project-card">
+                <!-- ✨ PROYECTO 1: Ahora TODO el cuadro es clickable -->
+                <a href="proyectos/analisis-revpar-airbnb/" class="project-card fade-in-scroll">
                     <div class="project-header">
                         <div class="project-icon">📊</div>
                         <div class="project-number">01</div>
@@ -1187,20 +1260,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             <span class="project-tag">Looker Studio</span>
                             <span class="project-tag">RevPAR</span>
                         </div>
-                        <a href="proyectos/analisis-revpar-airbnb/" class="project-link">
+                        <span class="project-link">
                             Ver Case Study
                             <span>→</span>
-                        </a>
+                        </span>
                     </div>
-                </div>
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- SECCIÓN RECURSOS (NUEVA) -->
+    <!-- SECCIÓN RECURSOS -->
     <section class="resources" id="recursos">
         <div class="section-container">
-            <div class="section-header">
+            <div class="section-header fade-in-scroll">
                 <span class="section-label">RECURSOS GRATUITOS</span>
                 <h2 class="section-title">
                     Recursos <span class="accent">Útiles</span>
@@ -1210,9 +1283,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     Herramientas y guías prácticas que comparto para ayudar a otros analistas y profesionales digitales.
                 </p>
             </div>
-                
-                <!-- Espacio para futuros recursos -->
-                <div class="resource-card" style="opacity: 0.5; border-style: dashed;">
+            
+            <div class="resources-grid">
+                <div class="resource-card fade-in-scroll" style="opacity: 0.5; border-style: dashed;">
                     <div class="resource-icon">🎯</div>
                     <h3>Próximamente</h3>
                     <p>Recursos y guías prácticas en camino...</p>
@@ -1224,7 +1297,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- SECCIÓN HABILIDADES -->
     <section class="skills">
         <div class="section-container">
-            <div class="section-header">
+            <div class="section-header fade-in-scroll">
                 <span class="section-label">HABILIDADES</span>
                 <h2 class="section-title">
                     Habilidades <span class="accent">Adquiridas</span>
@@ -1233,19 +1306,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
             
             <div class="skills-grid">
-                <div class="skill-card">
+                <div class="skill-card fade-in-scroll">
                     <h4>📊 Analítica Web</h4>
                     <p>GA4, Adobe Analytics, GTM, análisis de comportamiento de usuario</p>
                 </div>
-                <div class="skill-card">
+                <div class="skill-card fade-in-scroll">
                     <h4>🎯 CRO & Testing</h4>
                     <p>Análisis de funnels, A/B testing, optimización de conversión</p>
                 </div>
-                <div class="skill-card">
+                <div class="skill-card fade-in-scroll">
                     <h4>💻 Análisis de Datos</h4>
                     <p>SQL, Google Sheets, Excel, limpieza y transformación de datos</p>
                 </div>
-                <div class="skill-card">
+                <div class="skill-card fade-in-scroll">
                     <h4>📈 Visualización</h4>
                     <p>Looker Studio, dashboards interactivos, data storytelling, reportes ejecutivos</p>
                 </div>
@@ -1253,10 +1326,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
     </section>
 
-    <!-- SECCIÓN SOBRE MÍ (COMPACTA) -->
+    <!-- SECCIÓN SOBRE MÍ -->
     <section class="about" id="sobre-mi">
         <div class="section-container">
-            <div class="section-header">
+            <div class="section-header fade-in-scroll">
                 <span class="section-label">SOBRE MÍ</span>
                 <h2 class="section-title">
                     ¿Quién <span class="accent">soy?</span>
@@ -1265,13 +1338,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
             
             <div class="about-content">
-                <div class="about-image-wrapper">
+                <div class="about-image-wrapper fade-in-scroll">
                     <img src="1767631640565.jpg" alt="Sobre Nazaret" class="about-photo">
                     <div class="about-deco about-deco-1">✦</div>
                     <div class="about-deco about-deco-2">✦</div>
                 </div>
                 
-                <div class="about-text">
+                <div class="about-text fade-in-scroll">
                     <p class="lead-text">
                         Analista digital junior con experiencia en turismo, especializada en convertir datos en decisiones estratégicas medibles.
                     </p>
@@ -1279,7 +1352,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         Mi trayectoria profesional en <strong>Barceló Hotel Group</strong> (Praga) y <strong>Heritage Queenstown</strong> (Nueva Zelanda) me permitió entender profundamente el customer journey desde la perspectiva operativa, trabajando directamente en puntos críticos de conversión en hoteles y OTAs.
                     </p>
                     
-                    <!-- Contenido expandible -->
                     <div class="more-content" id="moreAbout">
                         <p>
                             Recientemente completé un <strong>Máster en Analítica Digital y CRO</strong> en MOA Institute, donde consolidé habilidades técnicas en GA4, SQL, BigQuery, análisis de funnels y visualización de datos con Looker Studio.
@@ -1302,7 +1374,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <section class="contact" id="contacto">
         <div class="contact-geometric"></div>
         <div class="section-container">
-            <div class="contact-content">
+            <div class="contact-content fade-in-scroll">
                 <h2>
                     ¿Trabajamos <span class="highlight">juntos?</span>
                 </h2>
@@ -1326,7 +1398,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </footer>
 
     <script>
-        // Toggle "Leer más" en Sobre Mí
+        // Toggle "Leer más"
         function toggleAbout() {
             const moreContent = document.getElementById('moreAbout');
             const readMoreText = document.getElementById('readMoreText');
@@ -1357,26 +1429,24 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             });
         });
 
-        // Animaciones al hacer scroll
-        const observerOptions = {
-            threshold: 0.15,
-            rootMargin: '0px 0px -80px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
+        // ✨ NUEVO: Fade-in al scroll mejorado
+        const fadeElements = document.querySelectorAll('.fade-in-scroll');
+        
+        const fadeObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
                 if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, index * 100); // Delay escalonado
                 }
             });
-        }, observerOptions);
-
-        document.querySelectorAll('.project-card, .skill-card, .resource-card').forEach((el, index) => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(40px)';
-            el.style.transition = `all 0.7s ease-out ${index * 0.12}s`;
-            observer.observe(el);
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+        
+        fadeElements.forEach(el => {
+            fadeObserver.observe(el);
         });
     </script>
 </body>
