@@ -13,6 +13,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <title>Nazaret Morón | Analista Digital Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Work+Sans:wght@300;400;500;600;700;800&family=Crimson+Pro:ital,wght@1,400;1,600&display=swap" rel="stylesheet">
     <style>
+        
         :root {
             --burdeos: #68192E;
             --burdeos-dark: #3D0E1A;
@@ -1095,6 +1096,46 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 text-align: center;
             }
         }
+        /* =========================
+   BOTONES PROYECTOS
+   ========================= */
+
+.project-actions {
+    margin-top: 1.5rem;
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.btn-primary {
+    background-color: var(--burdeos);
+    color: #fff;
+    padding: 0.6rem 1.4rem;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.btn-secondary {
+    border: 1px solid var(--burdeos);
+    color: var(--burdeos);
+    padding: 0.6rem 1.4rem;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+}
+
+.btn-secondary:hover {
+    background-color: rgba(104, 25, 46, 0.05);
+}
+
     </style>
 </head>
 <body>
@@ -1231,44 +1272,65 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
 
     <!-- SECCIÓN PROYECTOS -->
-    <section class="projects" id="proyectos">
-        <div class="section-container">
-            <div class="section-header fade-in-scroll">
-                <span class="section-label">PORTFOLIO</span>
-                <h2 class="section-title">
-                    Proyectos <span class="accent">Destacados</span>
-                </h2>
-                <div class="page-divider"></div>
-                <p class="section-subtitle">
-                    Una selección de proyectos que demuestran mi capacidad para extraer conclusiones valiosas de datos complejos y proponer soluciones estratégicas accionables.
-                </p>
-            </div>
-            
-            <div class="projects-grid" id="projectsGrid">
-                <!-- ✨ PROYECTO 1: Ahora TODO el cuadro es clickable -->
-                <a href="proyectos/analisis-revpar-airbnb/" class="project-card fade-in-scroll">
-                    <div class="project-header">
-                        <div class="project-icon">📊</div>
-                        <div class="project-number">01</div>
-                    </div>
-                    <div class="project-content">
-                        <span class="project-label">ANÁLISIS DE DATOS</span>
-                        <h3>Análisis RevPAR Airbnb Málaga</h3>
-                        <p>Análisis de +8.300 propiedades para identificar los barrios más rentables. Churriana supera al Centro en rentabilidad (12,4€ vs 12,1€) con 98% menos competencia.</p>
-                        <div class="project-tags">
-                            <span class="project-tag">Google Sheets</span>
-                            <span class="project-tag">Looker Studio</span>
-                            <span class="project-tag">RevPAR</span>
-                        </div>
-                        <span class="project-link">
-                            Ver Case Study
-                            <span>→</span>
-                        </span>
-                    </div>
-                </a>
-            </div>
+  <!-- SECCIÓN PROYECTOS -->
+<section class="projects" id="proyectos">
+    <div class="section-container">
+
+        <div class="section-header fade-in-scroll">
+            <span class="section-label">PORTFOLIO</span>
+            <h2 class="section-title">
+                Proyectos <span class="accent">Destacados</span>
+            </h2>
+            <div class="page-divider"></div>
+            <p class="section-subtitle">
+                Proyectos de análisis de datos aplicados a contextos reales.
+                Cada uno incluye metodología, hallazgos y decisiones accionables.
+            </p>
         </div>
-    </section>
+
+        <div class="projects-grid">
+
+            <!-- PROYECTO 01 -->
+            <div class="project-card fade-in-scroll">
+                <div class="project-header">
+                    <div class="project-icon">📊</div>
+                    <div class="project-number">01</div>
+                </div>
+
+                <div class="project-content">
+                    <span class="project-label">ANÁLISIS DE DATOS</span>
+                    <h3>Análisis RevPAR Airbnb Málaga</h3>
+
+                    <p>
+                        Análisis de +8.300 propiedades para identificar los barrios
+                        con mayor rentabilidad real. Churriana supera al Centro
+                        con un 98% menos de competencia.
+                    </p>
+
+                    <div class="project-tags">
+                        <span class="project-tag">Google Sheets</span>
+                        <span class="project-tag">Looker Studio</span>
+                        <span class="project-tag">RevPAR</span>
+                    </div>
+
+                    <div class="project-actions">
+                        <a href="proyectos/analisis-revpar-airbnb/" class="btn-primary">
+                            Ver case study →
+                        </a>
+
+                        <a href="proyectos/analisis-revpar-airbnb/resumen-revpar.pdf"
+                           class="btn-secondary"
+                           target="_blank">
+                            Descargar resumen PDF
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
 
     <!-- SECCIÓN RECURSOS -->
     <section class="resources" id="recursos">
