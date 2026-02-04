@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resumen Ejecutivo - Análisis RevPAR Airbnb Málaga</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Work+Sans:wght@300;400;500;600;700;800&display=swap');
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Work Sans', sans-serif; background: #F5F1E8; color: #2B2B2B; line-height: 1.8; }
+        
+        .page { width: 210mm; min-height: 297mm; margin: 20px auto; background: #FDFCFA; position: relative; padding: 70px 60px; box-shadow: 0 0 20px rgba(0,0,0,0.1); }
+        
+        /* PORTADA */
+        .cover { background: linear-gradient(135deg, #FF1493 0%, #FF69B4 100%); color: white; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; }
+        .cover h1 { font-family: 'Playfair Display', serif; font-size: 64px; margin-bottom: 20px; line-height: 1.1; }
+        .cover .highlight { background: #FFD700; color: #68192E; padding: 0 10px; }
+        .pill { background: rgba(255,255,255,0.2); padding: 8px 20px; border-radius: 20px; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 30px; border: 1px solid white; }
+
+        /* ESTILOS DE CONTENIDO */
+        .badge { display: inline-block; background: #FF1493; color: white; padding: 5px 15px; border-radius: 15px; font-size: 10px; font-weight: 700; margin-bottom: 20px; }
+        .section-title { font-family: 'Playfair Display', serif; font-size: 42px; color: #68192E; margin-bottom: 20px; }
+        .accent { color: #FF1493; }
+        .divider-modern { width: 100px; height: 4px; background: #FFD700; margin-bottom: 30px; }
+        .insight-card { background: white; border: 2px solid #FFD700; padding: 30px; border-radius: 15px; margin: 20px 0; }
+        
+        /* BOTONES FINALES (NUEVO) */
+        .final-actions {
+            margin-top: 50px;
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+        .btn-final {
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 14px;
+            transition: 0.3s;
+            display: inline-block;
+        }
+        .btn-full { background: #68192E; color: white; border: 2px solid #68192E; }
+        .btn-download { background: transparent; color: #FF1493; border: 2px solid #FF1493; }
+        .btn-final:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+
+        @media print { .page { margin: 0; box-shadow: none; } .final-actions { display: none; } }
+    </style>
+</head>
+<body>
+
+    <div class="page cover">
+        <div class="pill">RESUMEN EJECUTIVO · 2026</div>
+        <h1>Dónde invertir<br>en <span class="highlight">Málaga</span></h1>
+        <p style="font-size: 18px; max-width: 500px;">Análisis de rentabilidad basado en datos reales de +8.300 propiedades.</p>
+    </div>
+
+    <div class="page">
+        <div class="badge">EL HALLAZGO</div>
+        <h2 class="section-title">La <span class="accent">paradoja</span> del Centro</h2>
+        <div class="divider-modern"></div>
+        
+        <div class="insight-card">
+            <h3 style="font-family: 'Playfair Display'; color: #68192E;">Churriana vs Centro</h3>
+            <p>Churriana (12,4€ RevPAR) supera al Centro (12,1€ RevPAR) con <strong>un 98% menos de competencia</strong>. La saturación en el centro está erosionando los márgenes de beneficio.</p>
+        </div>
+
+        <div class="insight-card" style="border-color: #FF1493;">
+            <h3 style="font-family: 'Playfair Display'; color: #68192E;">Zonas a evitar</h3>
+            <p><strong>Teatinos:</strong> Con solo 3€ de RevPAR medio, es la zona menos rentable para el modelo turístico debido al perfil principalmente estudiantil.</p>
+        </div>
+
+        <div class="final-actions">
+            <a href="proyectos/analisis-revpar-airbnb/index.html" class="btn-final btn-full">
+                Ver Case Study Completo →
+            </a>
+            
+            <a href="proyectos/analisis-revpar-airbnb/resumen-revpar.pdf" class="btn-final btn-download" download>
+                Descargar Resumen PDF
+            </a>
+        </div>
+        
+        <p style="text-align: center; font-size: 12px; margin-top: 30px; color: #999;">
+            Nazaret Morón · Analista Digital
+        </p>
+    </div>
+
+</body>
+</html>
