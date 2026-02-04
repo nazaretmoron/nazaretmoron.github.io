@@ -9,15 +9,19 @@
         
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
+        /* TRUCO PARA EL DESPLAZAMIENTO SUAVE */
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'Work Sans', sans-serif;
-            background: #e0e0e0; /* Fondo gris suave para resaltar el documento */
+            background: #e0e0e0; 
             color: #2B2B2B;
             line-height: 1.6;
             padding: 20px 0;
         }
         
-        /* Contenedor único para eliminar espacios entre hojas */
         .report-container {
             width: 210mm;
             margin: 0 auto;
@@ -26,14 +30,14 @@
             overflow: hidden;
         }
         
-        /* PORTADA IMPACTANTE */
+        /* PORTADA */
         .cover {
             background: linear-gradient(135deg, #FF1493 0%, #FF69B4 100%);
             padding: 80px 60px;
             color: white;
             position: relative;
             overflow: hidden;
-            min-height: 80vh; /* Portada alta pero no infinita */
+            min-height: 85vh;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -98,8 +102,9 @@
 
         /* SECCIONES DE CONTENIDO */
         .content-section { 
-            padding: 60px 70px; 
+            padding: 80px 70px; 
             background: #FDFCFA;
+            scroll-margin-top: 20px; /* Evita que el título quede pegado arriba al saltar */
         }
         
         .badge { 
@@ -121,9 +126,9 @@
             border-radius: 15px; margin-top: 20px;
         }
 
-        /* BOTONES */
+        /* CONTENEDOR DE BOTONES */
         .action-container {
-            padding: 40px 70px 60px 70px;
+            padding: 20px 70px 60px 70px;
             display: flex;
             gap: 15px;
             justify-content: center;
@@ -131,21 +136,25 @@
         }
 
         .btn-naz {
-            padding: 16px 30px;
+            padding: 18px 35px;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 800;
             font-size: 13px;
             text-transform: uppercase;
             transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            display: inline-block;
         }
 
-        .btn-primary { background: #68192E; color: white; }
-        .btn-secondary { border: 2px solid #FF1493; color: #FF1493; }
-        .btn-naz:hover { transform: translateY(-3px); opacity: 0.9; }
+        .btn-primary { background: #68192E; color: white; box-shadow: 0 10px 20px rgba(104, 25, 46, 0.2); }
+        .btn-secondary { border: 2px solid #FF1493; color: #FF1493; background: transparent; }
+        
+        .btn-naz:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
 
         .footer { 
-            padding: 40px 70px; 
+            padding: 60px 70px; 
             border-top: 1px solid #eee; 
             background: #f9f9f9;
         }
@@ -165,18 +174,24 @@
                 <div class="pill">RESUMEN EJECUTIVO · 2026</div>
                 <h1>Dónde invertir<br>en <span class="highlight">Málaga</span></h1>
                 <p style="font-size: 18px; opacity: 0.9; max-width: 450px;">Análisis de RevPAR: Por qué la saturación del centro está creando oportunidades en la periferia.</p>
+                
                 <div class="cover-stat">
                     <div class="cover-stat-val">8.300+</div>
                     <div style="color: #666; font-size: 11px; font-weight: 700; text-transform: uppercase;">Propiedades<br>Analizadas</div>
                 </div>
+
+                <div style="margin-top: 40px;">
+                    <a href="#informe" class="btn-naz btn-primary">Ver Informe Completo</a>
+                </div>
             </div>
+
             <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-top: 40px;">
                 <div><p style="font-weight: 800;">NAZARET MORÓN</p><p style="opacity: 0.8; font-size: 13px;">Analista Digital</p></div>
                 <div style="opacity: 0.8; font-size: 13px;">Enero 2026</div>
             </div>
         </div>
 
-        <div class="content-section">
+        <div id="informe" class="content-section">
             <div class="badge">EL HALLAZGO</div>
             <h2 class="section-title">La <span class="accent">paradoja</span> del Centro</h2>
             <div class="divider"></div>
@@ -196,19 +211,19 @@
 
             <div class="insight-box">
                 <p style="font-size: 16px;">
-                    <strong>Saturación vs Rentabilidad:</strong> Con más de 6.000 propiedades, el Centro sufre una competencia feroz. Churriana, con solo 150 propiedades, logra un RevPAR superior gracias a la falta de oferta.
+                    <strong>Saturación vs Rentabilidad:</strong> Con más de 6.000 propiedades, el Centro sufre una competencia feroz. Churriana, con solo 150 propiedades, logra un RevPAR superior gracias a la falta de oferta y una demanda validada.
                 </p>
             </div>
         </div>
 
         <div class="action-container">
-            <a href="proyectos/analisis-revpar-airbnb/index.html" class="btn-naz btn-primary">Ver Estudio Completo</a>
+            <a href="proyectos/analisis-revpar-airbnb/index.html" class="btn-naz btn-secondary">Caso de Estudio Completo</a>
             <a href="proyectos/analisis-revpar-airbnb/resumen-revpar.pdf" class="btn-naz btn-secondary" download>Descargar PDF</a>
         </div>
 
         <div class="footer">
             <p style="font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 900; color: #68192E;">Nazaret Morón</p>
-            <p style="color: #888; font-size: 13px;">Data Analyst · Especialista en Visualización de Datos</p>
+            <p style="color: #888; font-size: 13px; margin-top: 5px;">Data Analyst · Especialista en Visualización de Datos</p>
         </div>
     </div>
 
