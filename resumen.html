@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resumen Ejecutivo - Análisis RevPAR Airbnb Málaga</title>
+    <title>Análisis RevPAR Airbnb Málaga - Nazaret Morón</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Work+Sans:wght@300;400;500;600;700;800&display=swap');
         
@@ -16,188 +16,259 @@
             background: #F5F1E8;
             color: #2B2B2B;
             line-height: 1.8;
+            padding-top: 80px; /* Espacio para el menú fijo */
         }
-        
-        /* CADA HOJA INDEPENDIENTE */
+
+        /* ═══════ TU ENCABEZADO ORIGINAL ═══════ */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(253, 252, 250, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(104, 25, 46, 0.1);
+            z-index: 1000;
+            padding: 0 40px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 900;
+            color: #68192E;
+            text-decoration: none;
+        }
+
+        .logo span { color: #FF1493; }
+
+        .nav-links { display: flex; gap: 40px; }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #68192E;
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover { color: #FF1493; }
+
+        /* ═══════ ESTRUCTURA DE PÁGINAS ROSA ═══════ */
         .page {
             width: 210mm;
             min-height: 297mm;
-            margin: 0 auto 30px auto;
+            margin: 0 auto 40px auto;
             background: #FDFCFA;
             position: relative;
-            padding: 0;
             overflow: hidden;
-            box-shadow: 0 0 30px rgba(0,0,0,0.1);
+            box-shadow: 0 0 40px rgba(0,0,0,0.1);
         }
-        
-        /* PORTADA ROSA */
+
+        /* PÁGINA 1: PORTADA ROSA */
         .cover {
             background: linear-gradient(135deg, #FF1493 0%, #FF69B4 100%);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             padding: 60px;
-            position: relative;
-            overflow: hidden;
+            color: white;
             min-height: 297mm;
         }
-        
-        .cover::before { content: ''; position: absolute; width: 500px; height: 500px; border: 60px solid rgba(255,215,0,0.12); border-radius: 50%; top: -200px; right: -150px; }
-        .geometric-lines { position: absolute; width: 100%; height: 100%; top: 0; left: 0; opacity: 0.1; }
-        .line { position: absolute; background: white; transform-origin: center; }
-        .line:nth-child(1) { width: 2px; height: 300px; top: 20%; left: 15%; transform: rotate(25deg); }
-        .line:nth-child(2) { width: 2px; height: 200px; top: 40%; right: 20%; transform: rotate(-15deg); }
-        .line:nth-child(3) { width: 2px; height: 250px; bottom: 10%; left: 30%; transform: rotate(45deg); }
 
-        .cover-content { position: relative; z-index: 2; }
-        .pill { display: inline-block; background: rgba(255,255,255,0.2); backdrop-filter: blur(10px); padding: 10px 24px; border-radius: 30px; font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: white; margin-bottom: 40px; border: 1px solid rgba(255,255,255,0.3); }
-        .cover h1 { font-family: 'Playfair Display', serif; font-size: 64px; font-weight: 900; color: white; line-height: 1.05; margin-bottom: 25px; }
-        .cover h1 .highlight { background: #FFD700; color: #68192E; padding: 0 16px; display: inline-block; transform: skew(-3deg); }
-        .cover-subtitle { font-size: 17px; font-weight: 400; color: rgba(255,255,255,0.95); max-width: 480px; line-height: 1.7; margin-bottom: 50px; }
-        
-        .cover-stat-box { display: inline-flex; align-items: center; gap: 25px; background: white; padding: 25px 35px; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.2); position: relative; }
-        .cover-stat-value { font-family: 'Playfair Display', serif; font-size: 42px; font-weight: 900; color: #FF1493; line-height: 1; }
-        .cover-stat-label { font-size: 11px; color: #666; text-transform: uppercase; letter-spacing: 1px; }
+        .cover::before {
+            content: ''; position: absolute; width: 500px; height: 500px;
+            border: 60px solid rgba(255,215,0,0.12); border-radius: 50%;
+            top: -200px; right: -150px;
+        }
+
+        .pill {
+            display: inline-block; background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px); padding: 10px 24px; border-radius: 30px;
+            font-size: 10px; font-weight: 700; letter-spacing: 3px;
+            text-transform: uppercase; border: 1px solid rgba(255,255,255,0.3);
+            margin-bottom: 40px;
+        }
+
+        .cover h1 {
+            font-family: 'Playfair Display', serif; font-size: 64px;
+            font-weight: 900; line-height: 1.05; margin-bottom: 25px;
+        }
+
+        .cover h1 .highlight {
+            background: #FFD700; color: #68192E; padding: 0 16px;
+            display: inline-block; transform: skew(-3deg);
+        }
+
+        .cover-stat-box {
+            display: inline-flex; align-items: center; gap: 25px;
+            background: white; padding: 25px 35px; border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2); color: #2B2B2B;
+        }
 
         /* PÁGINAS INTERNAS */
-        .content-page { padding: 70px 60px; position: relative; min-height: 297mm; scroll-margin-top: 20px; }
-        .badge { display: inline-block; background: linear-gradient(135deg, #FF1493 0%, #FF69B4 100%); color: white; padding: 10px 24px; border-radius: 20px; font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 30px; }
+        .content-page { padding: 80px 70px; scroll-margin-top: 100px; }
+        .badge {
+            background: linear-gradient(135deg, #FF1493 0%, #FF69B4 100%);
+            color: white; padding: 10px 24px; border-radius: 20px;
+            font-size: 10px; font-weight: 700; text-transform: uppercase; margin-bottom: 30px;
+            display: inline-block;
+        }
+
         .section-title { font-family: 'Playfair Display', serif; font-size: 52px; font-weight: 900; color: #68192E; line-height: 1.1; margin-bottom: 20px; }
-        .accent { color: #FF1493; position: relative; z-index: 1; }
-        .accent::after { content: ''; position: absolute; bottom: 8px; left: 0; width: 100%; height: 14px; background: #FFD700; z-index: -1; opacity: 0.35; }
-        .divider-modern { display: flex; align-items: center; gap: 20px; margin: 30px 0 50px 0; }
-        .divider-modern::before { content: ''; width: 70px; height: 4px; background: linear-gradient(90deg, #FF1493 0%, #FFD700 100%); border-radius: 2px; }
-        
+        .accent { color: #FF1493; position: relative; }
+        .accent::after { content: ''; position: absolute; bottom: 8px; left: 0; width: 100%; height: 14px; background: #FFD700; z-index: -1; opacity: 0.3; }
+
         .stats-modern { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin: 40px 0; }
-        .stat-modern { background: linear-gradient(135deg, #FDFCFA 0%, #FFF9F0 100%); border-left: 5px solid #FF1493; padding: 35px; border-radius: 8px; }
-        .stat-modern-value { font-family: 'Playfair Display', serif; font-size: 48px; font-weight: 900; color: #68192E; line-height: 1; }
-        
-        .finding-modern { display: flex; gap: 30px; margin: 35px 0; padding: 35px; background: white; border-radius: 12px; box-shadow: 0 2px 20px rgba(0,0,0,0.04); position: relative; }
-        .num-circle-outer { width: 80px; height: 80px; background: linear-gradient(135deg, #FF1493 0%, #FF69B4 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; flex-shrink: 0; }
-        
-        .decision-modern { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 50px 0; }
+        .stat-modern { background: #FFF9F0; border-left: 5px solid #FF1493; padding: 35px; border-radius: 8px; }
+        .stat-modern-value { font-family: 'Playfair Display', serif; font-size: 48px; font-weight: 900; color: #68192E; }
+
+        .finding-modern { display: flex; gap: 30px; margin: 35px 0; padding: 35px; background: white; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
+        .num-circle { width: 60px; height: 60px; background: #FF1493; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: 900; flex-shrink: 0; }
+
+        .decision-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 40px 0; }
         .decision-box { padding: 40px; border-radius: 16px; border: 3px solid; }
-        .decision-box.yes { background: #D4EDDA; border-color: #28A745; }
-        .decision-box.no { background: #F8D7DA; border-color: #DC3545; }
+        .yes { background: #E8F5E9; border-color: #28A745; }
+        .no { background: #FFEBEE; border-color: #DC3545; }
 
-        .conclusion-modern { background: #FFD700; padding: 50px; border-radius: 20px; margin: 50px 0; }
-
-        /* BOTONES DE ACCIÓN */
-        .naz-action-container { display: flex; gap: 20px; justify-content: center; margin-top: 50px; padding-bottom: 20px; }
-        .btn-naz { padding: 18px 35px; border-radius: 50px; text-decoration: none; font-weight: 800; font-size: 13px; text-transform: uppercase; transition: 0.3s; display: inline-block; cursor: pointer; }
-        .btn-naz-fill { background: #68192E; color: white; border: none; }
-        .btn-naz-outline { border: 2px solid #FF1493; color: #FF1493; background: transparent; }
+        /* BOTONES ACCIÓN */
+        .btn-naz {
+            padding: 18px 35px; border-radius: 50px; text-decoration: none;
+            font-weight: 800; font-size: 13px; text-transform: uppercase;
+            transition: 0.3s; display: inline-block;
+        }
+        .btn-naz-fill { background: #68192E; color: white; }
+        .btn-naz-outline { border: 2px solid #FF1493; color: #FF1493; }
         .btn-naz:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
 
-        @media print { .naz-action-container, .btn-scroll-top { display: none; } .page { margin: 0; box-shadow: none; page-break-after: always; } }
+        @media print {
+            nav, .btn-naz { display: none; }
+            body { padding-top: 0; }
+            .page { margin: 0; box-shadow: none; page-break-after: always; }
+        }
     </style>
 </head>
 <body>
 
+    <nav>
+        <a href="../../index.html" class="logo">Naz<span>.</span></a>
+        <div class="nav-links">
+            <a href="../../index.html#proyectos">Proyectos</a>
+            <a href="../../index.html#sobre-mi">Sobre mí</a>
+            <a href="mailto:data.nazaret@gmail.com">Contacto</a>
+        </div>
+    </nav>
+
     <div class="page cover">
-        <div class="geometric-lines"><div class="line"></div><div class="line"></div><div class="line"></div></div>
         <div class="cover-content">
             <div class="pill">RESUMEN EJECUTIVO · 2026</div>
             <h1>Dónde invertir<br>en <span class="highlight">Málaga</span></h1>
-            <p class="cover-subtitle">Los datos revelan oportunidades ocultas: barrios periféricos superan a zonas tradicionales en rentabilidad con 98% menos competencia.</p>
-            <div class="cover-stat-box">
-                <div class="cover-stat-value">8.300+</div>
-                <div class="cover-stat-label">Propiedades analizadas</div>
+            <p style="font-size: 18px; margin-top: 30px; max-width: 500px;">Análisis RevPAR: Barrios periféricos superan a zonas tradicionales en rentabilidad real.</p>
+            <div class="cover-stat-box" style="margin-top: 40px;">
+                <div>
+                    <div style="font-family: 'Playfair Display'; font-size: 42px; font-weight: 900; color: #FF1493;">8.300+</div>
+                    <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #666;">Propiedades analizadas</div>
+                </div>
             </div>
-            <div style="margin-top: 40px;">
-                <a href="#pagina-2" class="btn-naz btn-naz-fill btn-scroll-top">Ver Informe</a>
+            <div style="margin-top: 50px;">
+                <a href="#hallazgo" class="btn-naz btn-naz-fill">Ver Informe Completo</a>
             </div>
         </div>
-        <div class="cover-footer" style="display: flex; justify-content: space-between; border-top: 1px solid rgba(255,255,255,0.3); padding-top: 25px;">
-            <div><div style="font-weight: 700; color: white;">NAZARET MORÓN</div><div style="color: rgba(255,255,255,0.8); font-size: 12px;">Analista Digital · Granada</div></div>
-            <div style="color: rgba(255,255,255,0.8); font-size: 12px;">Enero 2026</div>
+        <div style="display: flex; justify-content: space-between; border-top: 1px solid rgba(255,255,255,0.3); padding-top: 25px;">
+            <div><strong>NAZARET MORÓN</strong><br><span style="font-size: 12px; opacity: 0.8;">Analista Digital</span></div>
+            <div style="font-size: 12px; opacity: 0.8;">Enero 2026</div>
         </div>
     </div>
 
-    <div class="page content-page" id="pagina-2">
+    <div class="page content-page" id="hallazgo">
         <div class="badge">EL HALLAZGO</div>
         <h2 class="section-title">La <span class="accent">paradoja</span><br>del Centro</h2>
-        <div class="divider-modern"></div>
-        <p style="font-size: 22px; font-weight: 500; color: #68192E; margin-bottom: 30px;">Churriana destrona a Centro en rentabilidad real con una fracción de la competencia.</p>
         <div class="stats-modern">
             <div class="stat-modern">
-                <div style="color: #FF1493; font-weight: 700; font-size: 12px; text-transform: uppercase;">CHURRIANA</div>
+                <p style="color: #FF1493; font-weight: 700; font-size: 11px;">CHURRIANA</p>
                 <div class="stat-modern-value">12,4€</div>
-                <div style="color: #666; font-size: 13px;">RevPAR · 150 propiedades</div>
+                <p style="font-size: 13px; color: #666;">RevPAR · 150 propiedades</p>
             </div>
             <div class="stat-modern">
-                <div style="color: #FF1493; font-weight: 700; font-size: 12px; text-transform: uppercase;">CENTRO</div>
+                <p style="color: #FF1493; font-weight: 700; font-size: 11px;">CENTRO</p>
                 <div class="stat-modern-value">12,1€</div>
-                <div style="color: #666; font-size: 13px;">RevPAR · 6.389 propiedades</div>
+                <p style="font-size: 13px; color: #666;">RevPAR · 6.389 propiedades</p>
             </div>
         </div>
-        <div style="background: white; border: 2px solid #FFD700; padding: 45px; border-radius: 16px;">
-            <p>El 77% del mercado se concentra en Centro, pero su RevPAR apenas alcanza el segundo lugar. <strong>La saturación mata la rentabilidad.</strong> La oportunidad está en barrios emergentes con demanda validada y baja competencia.</p>
+        <div style="background: white; border: 2px solid #FFD700; padding: 40px; border-radius: 15px;">
+            <p>El 77% del mercado se concentra en Centro. <strong>La saturación está matando la rentabilidad.</strong> La oportunidad real está en la periferia validada.</p>
         </div>
     </div>
 
     <div class="page content-page">
         <div class="badge">INSIGHTS CLAVE</div>
         <h2 class="section-title">Tres datos<br><span class="accent">accionables</span></h2>
-        <div class="divider-modern"></div>
         <div class="finding-modern">
-            <div class="num-circle-outer"><div style="font-size: 32px; font-weight: 900; font-family: 'Playfair Display';">01</div></div>
-            <div style="margin-left: 20px;">
-                <h3 style="color: #68192E; margin-bottom: 8px;">Océano azul identificado</h3>
-                <p style="color: #666;">Los 5 barrios más rentables concentran solo el 10% de la oferta total. Amplio espacio para nuevos entrantes.</p>
-                <span style="background: #FFD700; color: #68192E; padding: 5px 14px; border-radius: 12px; font-size: 11px; font-weight: 700; margin-top: 10px; display: inline-block;">Churriana · Palma-Palmilla · Este</span>
+            <div class="num-circle">01</div>
+            <div>
+                <h3 style="color:#68192E;">Océano azul</h3>
+                <p style="color:#666;">Los barrios más rentables solo concentran el 10% de la oferta.</p>
             </div>
         </div>
         <div class="finding-modern">
-            <div class="num-circle-outer"><div style="font-size: 32px; font-weight: 900; font-family: 'Playfair Display';">02</div></div>
-            <div style="margin-left: 20px;">
-                <h3 style="color: #68192E; margin-bottom: 8px;">Saturación erosiona márgenes</h3>
-                <p style="color: #666;">Barrios con menos de 500 propiedades mantienen rentabilidad superior. La competencia excesiva genera guerra de precios.</p>
+            <div class="num-circle">02</div>
+            <div>
+                <h3 style="color:#68192E;">Saturación</h3>
+                <p style="color:#666;">A más de 500 propiedades por zona, la rentabilidad cae un 15%.</p>
             </div>
         </div>
         <div class="finding-modern">
-            <div class="num-circle-outer"><div style="font-size: 32px; font-weight: 900; font-family: 'Playfair Display';">03</div></div>
-            <div style="margin-left: 20px;">
-                <h3 style="color: #68192E; margin-bottom: 8px;">Teatinos: la zona trampa</h3>
-                <p style="color: #666;">RevPAR de 3€/día — el más bajo. Demanda estudiantil incompatible con modelo turístico de alta rotación.</p>
+            <div class="num-circle">03</div>
+            <div>
+                <h3 style="color:#68192E;">Zona trampa</h3>
+                <p style="color:#666;">Teatinos registra el RevPAR más bajo (3€) por demanda estudiantil.</p>
             </div>
         </div>
     </div>
 
     <div class="page content-page">
-        <div class="badge">DECISIÓN</div>
+        <div class="badge">ESTRATEGIA</div>
         <h2 class="section-title">Dónde <span class="accent">invertir</span><br>vs evitar</h2>
-        <div class="divider-modern"></div>
-        <div class="decision-modern">
+        <div class="decision-grid">
             <div class="decision-box yes">
-                <h3 style="font-family: 'Playfair Display'; font-size: 26px; margin-bottom: 20px; color: #68192E;">Priorizar</h3>
-                <p><strong>Churriana (12,4€)</strong><br>150 propiedades · ROI rápido</p><br>
-                <p><strong>Palma-Palmilla (10,5€)</strong><br>217 propiedades · Balance ideal</p>
+                <h3 style="font-family:'Playfair Display'; margin-bottom:15px;">Priorizar</h3>
+                <p><strong>Churriana:</strong> ROI rápido.<br><strong>Palma-Palmilla:</strong> Balance ideal.</p>
             </div>
             <div class="decision-box no">
-                <h3 style="font-family: 'Playfair Display'; font-size: 26px; margin-bottom: 20px; color: #68192E;">Evitar</h3>
-                <p><strong>Centro (12,1€)</strong><br>6.389 propiedades · Saturado</p><br>
-                <p><strong>Teatinos (3€)</strong><br>Peor RevPAR de Málaga</p>
+                <h3 style="font-family:'Playfair Display'; margin-bottom:15px;">Evitar</h3>
+                <p><strong>Centro:</strong> Saturación crítica.<br><strong>Teatinos:</strong> RevPAR nulo.</p>
             </div>
         </div>
-        <div class="conclusion-modern">
-            <h3 style="font-family: 'Playfair Display'; font-size: 32px; color: #68192E; margin-bottom: 20px;">La regla de oro</h3>
-            <p style="font-size: 18px;">No competir donde todos compiten. <strong>Buscar espacios con demanda validada pero oferta limitada.</strong> Los datos no mienten.</p>
+        <div style="background:#FFD700; padding:40px; border-radius:15px; margin-top:30px;">
+            <h3 style="font-family:'Playfair Display'; color:#68192E;">La regla de oro</h3>
+            <p>No competir donde todos compiten. Buscar demanda validada con oferta limitada.</p>
         </div>
     </div>
 
     <div class="page content-page">
         <div class="badge">CONCLUSIÓN</div>
-        <h2 class="section-title">Decisiones basadas<br>en <span class="accent">datos</span></h2>
-        <div class="divider-modern"></div>
-        <div style="background: white; border: 2px solid #FFD700; padding: 45px; border-radius: 16px; margin-bottom: 40px;">
-            <h3 style="font-family: 'Playfair Display'; font-size: 24px; color: #68192E; margin-bottom: 15px;">Ventana de oportunidad limitada</h3>
-            <p>Los barrios emergentes experimentan crecimiento acelerado. <strong>Cada nueva propiedad reduce la ventaja de los pioneros.</strong> Decisión recomendada: primer semestre 2026.</p>
+        <h2 class="section-title">Decisiones con <span class="accent">datos</span></h2>
+        <div style="background:white; border:2px solid #FFD700; padding:45px; border-radius:16px; margin-bottom:60px;">
+            <h3 style="font-family:'Playfair Display'; color:#68192E; margin-bottom:15px;">Oportunidad 2026</h3>
+            <p>Los barrios emergentes crecen rápido. La ventaja es para los pioneros en este primer semestre.</p>
         </div>
 
-        <div class="naz-action-container">
-            <a href="proyectos/analisis-revpar-airbnb/index.html" class="btn-naz btn-naz-fill">Ver Caso de Estudio</a>
-            <a href="proyectos/analisis-revpar-airbnb/resumen-revpar.pdf" class="btn-naz btn-naz-outline" download>Descargar PDF</a>
+        <div style="display:flex; gap:20px; justify-content:center; margin-bottom:60px;">
+            <a href="index.html" class="btn-naz btn-naz-fill">Caso Completo</a>
+            <a href="resumen-revpar.pdf" class="btn-naz btn-naz-outline" download>Descargar PDF</a>
         </div>
 
-        <div
+        <div style="border-top:2px solid #FFD700; padding-top:40px;">
+            <div style="font-family:'Playfair Display'; font-size:28px; font-weight:900; color:#68192E;">Nazaret Morón</div>
+            <p style="color:#666; font-size:14px;">Analista Digital · Granada</p>
+        </div>
+    </div>
+
+</body>
+</html>
