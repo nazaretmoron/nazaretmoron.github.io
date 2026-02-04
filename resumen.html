@@ -9,7 +9,6 @@
         
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
-        /* EFECTO DE DESPLAZAMIENTO LIMPIO */
         html { scroll-behavior: smooth; }
 
         body {
@@ -19,10 +18,11 @@
             line-height: 1.8;
         }
         
+        /* CADA HOJA INDEPENDIENTE */
         .page {
             width: 210mm;
             min-height: 297mm;
-            margin: 0 auto 30px auto; /* Un poco de separación entre hojas para que se entienda el formato */
+            margin: 0 auto 30px auto;
             background: #FDFCFA;
             position: relative;
             padding: 0;
@@ -43,7 +43,6 @@
         }
         
         .cover::before { content: ''; position: absolute; width: 500px; height: 500px; border: 60px solid rgba(255,215,0,0.12); border-radius: 50%; top: -200px; right: -150px; }
-        .cover::after { content: ''; position: absolute; width: 300px; height: 300px; background: radial-gradient(circle, rgba(104, 25, 46, 0.15) 0%, transparent 70%); border-radius: 50%; bottom: -100px; left: -100px; }
         .geometric-lines { position: absolute; width: 100%; height: 100%; top: 0; left: 0; opacity: 0.1; }
         .line { position: absolute; background: white; transform-origin: center; }
         .line:nth-child(1) { width: 2px; height: 300px; top: 20%; left: 15%; transform: rotate(25deg); }
@@ -55,9 +54,10 @@
         .cover h1 { font-family: 'Playfair Display', serif; font-size: 64px; font-weight: 900; color: white; line-height: 1.05; margin-bottom: 25px; }
         .cover h1 .highlight { background: #FFD700; color: #68192E; padding: 0 16px; display: inline-block; transform: skew(-3deg); }
         .cover-subtitle { font-size: 17px; font-weight: 400; color: rgba(255,255,255,0.95); max-width: 480px; line-height: 1.7; margin-bottom: 50px; }
+        
         .cover-stat-box { display: inline-flex; align-items: center; gap: 25px; background: white; padding: 25px 35px; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.2); position: relative; }
         .cover-stat-value { font-family: 'Playfair Display', serif; font-size: 42px; font-weight: 900; color: #FF1493; line-height: 1; }
-        .cover-stat-label { font-size: 11px; color: #666; text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
+        .cover-stat-label { font-size: 11px; color: #666; text-transform: uppercase; letter-spacing: 1px; }
 
         /* PÁGINAS INTERNAS */
         .content-page { padding: 70px 60px; position: relative; min-height: 297mm; scroll-margin-top: 20px; }
@@ -69,11 +69,11 @@
         .divider-modern::before { content: ''; width: 70px; height: 4px; background: linear-gradient(90deg, #FF1493 0%, #FFD700 100%); border-radius: 2px; }
         
         .stats-modern { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin: 40px 0; }
-        .stat-modern { background: linear-gradient(135deg, #FDFCFA 0%, #FFF9F0 100%); border-left: 5px solid #FF1493; padding: 35px; border-radius: 8px; position: relative; }
+        .stat-modern { background: linear-gradient(135deg, #FDFCFA 0%, #FFF9F0 100%); border-left: 5px solid #FF1493; padding: 35px; border-radius: 8px; }
         .stat-modern-value { font-family: 'Playfair Display', serif; font-size: 48px; font-weight: 900; color: #68192E; line-height: 1; }
         
         .finding-modern { display: flex; gap: 30px; margin: 35px 0; padding: 35px; background: white; border-radius: 12px; box-shadow: 0 2px 20px rgba(0,0,0,0.04); position: relative; }
-        .num-circle-outer { width: 80px; height: 80px; background: linear-gradient(135deg, #FF1493 0%, #FF69B4 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; }
+        .num-circle-outer { width: 80px; height: 80px; background: linear-gradient(135deg, #FF1493 0%, #FF69B4 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; flex-shrink: 0; }
         
         .decision-modern { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 50px 0; }
         .decision-box { padding: 40px; border-radius: 16px; border: 3px solid; }
@@ -82,14 +82,14 @@
 
         .conclusion-modern { background: #FFD700; padding: 50px; border-radius: 20px; margin: 50px 0; }
 
-        /* ESTILOS BOTONES NAZARET */
-        .naz-action-container { display: flex; gap: 20px; justify-content: center; margin-top: 50px; }
-        .btn-naz { padding: 18px 35px; border-radius: 50px; text-decoration: none; font-weight: 800; font-size: 13px; text-transform: uppercase; transition: 0.3s; }
+        /* BOTONES DE ACCIÓN */
+        .naz-action-container { display: flex; gap: 20px; justify-content: center; margin-top: 50px; padding-bottom: 20px; }
+        .btn-naz { padding: 18px 35px; border-radius: 50px; text-decoration: none; font-weight: 800; font-size: 13px; text-transform: uppercase; transition: 0.3s; display: inline-block; cursor: pointer; }
         .btn-naz-fill { background: #68192E; color: white; border: none; }
         .btn-naz-outline { border: 2px solid #FF1493; color: #FF1493; background: transparent; }
         .btn-naz:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
 
-        @media print { .naz-action-container, .btn-cover-scroll { display: none; } .page { margin: 0; box-shadow: none; page-break-after: always; } }
+        @media print { .naz-action-container, .btn-scroll-top { display: none; } .page { margin: 0; box-shadow: none; page-break-after: always; } }
     </style>
 </head>
 <body>
@@ -105,4 +105,99 @@
                 <div class="cover-stat-label">Propiedades analizadas</div>
             </div>
             <div style="margin-top: 40px;">
-                <a href="#hallazgo" class="btn-naz btn-naz-fill btn-cover-scroll">Ver Informe
+                <a href="#pagina-2" class="btn-naz btn-naz-fill btn-scroll-top">Ver Informe</a>
+            </div>
+        </div>
+        <div class="cover-footer" style="display: flex; justify-content: space-between; border-top: 1px solid rgba(255,255,255,0.3); padding-top: 25px;">
+            <div><div style="font-weight: 700; color: white;">NAZARET MORÓN</div><div style="color: rgba(255,255,255,0.8); font-size: 12px;">Analista Digital · Granada</div></div>
+            <div style="color: rgba(255,255,255,0.8); font-size: 12px;">Enero 2026</div>
+        </div>
+    </div>
+
+    <div class="page content-page" id="pagina-2">
+        <div class="badge">EL HALLAZGO</div>
+        <h2 class="section-title">La <span class="accent">paradoja</span><br>del Centro</h2>
+        <div class="divider-modern"></div>
+        <p style="font-size: 22px; font-weight: 500; color: #68192E; margin-bottom: 30px;">Churriana destrona a Centro en rentabilidad real con una fracción de la competencia.</p>
+        <div class="stats-modern">
+            <div class="stat-modern">
+                <div style="color: #FF1493; font-weight: 700; font-size: 12px; text-transform: uppercase;">CHURRIANA</div>
+                <div class="stat-modern-value">12,4€</div>
+                <div style="color: #666; font-size: 13px;">RevPAR · 150 propiedades</div>
+            </div>
+            <div class="stat-modern">
+                <div style="color: #FF1493; font-weight: 700; font-size: 12px; text-transform: uppercase;">CENTRO</div>
+                <div class="stat-modern-value">12,1€</div>
+                <div style="color: #666; font-size: 13px;">RevPAR · 6.389 propiedades</div>
+            </div>
+        </div>
+        <div style="background: white; border: 2px solid #FFD700; padding: 45px; border-radius: 16px;">
+            <p>El 77% del mercado se concentra en Centro, pero su RevPAR apenas alcanza el segundo lugar. <strong>La saturación mata la rentabilidad.</strong> La oportunidad está en barrios emergentes con demanda validada y baja competencia.</p>
+        </div>
+    </div>
+
+    <div class="page content-page">
+        <div class="badge">INSIGHTS CLAVE</div>
+        <h2 class="section-title">Tres datos<br><span class="accent">accionables</span></h2>
+        <div class="divider-modern"></div>
+        <div class="finding-modern">
+            <div class="num-circle-outer"><div style="font-size: 32px; font-weight: 900; font-family: 'Playfair Display';">01</div></div>
+            <div style="margin-left: 20px;">
+                <h3 style="color: #68192E; margin-bottom: 8px;">Océano azul identificado</h3>
+                <p style="color: #666;">Los 5 barrios más rentables concentran solo el 10% de la oferta total. Amplio espacio para nuevos entrantes.</p>
+                <span style="background: #FFD700; color: #68192E; padding: 5px 14px; border-radius: 12px; font-size: 11px; font-weight: 700; margin-top: 10px; display: inline-block;">Churriana · Palma-Palmilla · Este</span>
+            </div>
+        </div>
+        <div class="finding-modern">
+            <div class="num-circle-outer"><div style="font-size: 32px; font-weight: 900; font-family: 'Playfair Display';">02</div></div>
+            <div style="margin-left: 20px;">
+                <h3 style="color: #68192E; margin-bottom: 8px;">Saturación erosiona márgenes</h3>
+                <p style="color: #666;">Barrios con menos de 500 propiedades mantienen rentabilidad superior. La competencia excesiva genera guerra de precios.</p>
+            </div>
+        </div>
+        <div class="finding-modern">
+            <div class="num-circle-outer"><div style="font-size: 32px; font-weight: 900; font-family: 'Playfair Display';">03</div></div>
+            <div style="margin-left: 20px;">
+                <h3 style="color: #68192E; margin-bottom: 8px;">Teatinos: la zona trampa</h3>
+                <p style="color: #666;">RevPAR de 3€/día — el más bajo. Demanda estudiantil incompatible con modelo turístico de alta rotación.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="page content-page">
+        <div class="badge">DECISIÓN</div>
+        <h2 class="section-title">Dónde <span class="accent">invertir</span><br>vs evitar</h2>
+        <div class="divider-modern"></div>
+        <div class="decision-modern">
+            <div class="decision-box yes">
+                <h3 style="font-family: 'Playfair Display'; font-size: 26px; margin-bottom: 20px; color: #68192E;">Priorizar</h3>
+                <p><strong>Churriana (12,4€)</strong><br>150 propiedades · ROI rápido</p><br>
+                <p><strong>Palma-Palmilla (10,5€)</strong><br>217 propiedades · Balance ideal</p>
+            </div>
+            <div class="decision-box no">
+                <h3 style="font-family: 'Playfair Display'; font-size: 26px; margin-bottom: 20px; color: #68192E;">Evitar</h3>
+                <p><strong>Centro (12,1€)</strong><br>6.389 propiedades · Saturado</p><br>
+                <p><strong>Teatinos (3€)</strong><br>Peor RevPAR de Málaga</p>
+            </div>
+        </div>
+        <div class="conclusion-modern">
+            <h3 style="font-family: 'Playfair Display'; font-size: 32px; color: #68192E; margin-bottom: 20px;">La regla de oro</h3>
+            <p style="font-size: 18px;">No competir donde todos compiten. <strong>Buscar espacios con demanda validada pero oferta limitada.</strong> Los datos no mienten.</p>
+        </div>
+    </div>
+
+    <div class="page content-page">
+        <div class="badge">CONCLUSIÓN</div>
+        <h2 class="section-title">Decisiones basadas<br>en <span class="accent">datos</span></h2>
+        <div class="divider-modern"></div>
+        <div style="background: white; border: 2px solid #FFD700; padding: 45px; border-radius: 16px; margin-bottom: 40px;">
+            <h3 style="font-family: 'Playfair Display'; font-size: 24px; color: #68192E; margin-bottom: 15px;">Ventana de oportunidad limitada</h3>
+            <p>Los barrios emergentes experimentan crecimiento acelerado. <strong>Cada nueva propiedad reduce la ventaja de los pioneros.</strong> Decisión recomendada: primer semestre 2026.</p>
+        </div>
+
+        <div class="naz-action-container">
+            <a href="proyectos/analisis-revpar-airbnb/index.html" class="btn-naz btn-naz-fill">Ver Caso de Estudio</a>
+            <a href="proyectos/analisis-revpar-airbnb/resumen-revpar.pdf" class="btn-naz btn-naz-outline" download>Descargar PDF</a>
+        </div>
+
+        <div
