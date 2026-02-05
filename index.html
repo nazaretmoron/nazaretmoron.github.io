@@ -11,12 +11,12 @@
     <title>Nazaret Morón | Analista Digital Portfolio</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Work+Sans:wght@300;400;500;600;700;800&family=Crimson+Pro:ital,wght@1,400;1,600&display=swap" rel="stylesheet">
-    
     <link rel="stylesheet" href="estilo-proyectos.css">
 </head>
 <body>
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-56X6LDHF"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
     <nav>
         <div class="nav-container">
             <a href="index.html" class="logo">Nazaret<span>Morón</span></a>
@@ -62,7 +62,7 @@
                 <div class="about-visual fade-in-scroll">
                     <div class="photo-frame">
                         <div class="photo-placeholder">
-                            <img src="tu-foto.jpg" alt="Nazaret Morón" style="width:100%; height:100%; object-fit:cover;">
+                             <img src="tu-foto.jpg" alt="Nazaret Morón" style="width:100%; height:100%; object-fit:cover;">
                         </div>
                         <div class="photo-bg-circle"></div>
                     </div>
@@ -75,7 +75,6 @@
         <div class="container">
             <span class="section-label">CASOS DE ESTUDIO</span>
             <h2 class="section-title">Análisis en <span class="accent">acción</span></h2>
-            
             <div class="projects-grid">
                 <div class="project-card fade-in-scroll">
                     <div class="project-image">
@@ -91,8 +90,7 @@
                             <span>Looker Studio</span>
                         </div>
                         <div class="project-actions">
-                            <a href="resumen.html" class="btn-small">Ver Resumen →</a>
-                            <a href="#" class="btn-small btn-secondary">Caso completo</a>
+                            <a href="resumen-revpar.html" class="btn-small">Ver Resumen →</a>
                         </div>
                     </div>
                 </div>
@@ -100,37 +98,27 @@
         </div>
     </section>
 
-    <footer>
-        <div class="footer-content">
-            <p>© 2026 Nazaret Morón · Diseñado para el impacto.</p>
-        </div>
-    </footer>
-
     <script>
         function toggleAbout() {
             const moreContent = document.getElementById('moreAbout');
-            const btnText = document.getElementById('readMoreText');
-            const btnArrow = document.getElementById('readMoreArrow');
-            
+            const readMoreText = document.getElementById('readMoreText');
+            const readMoreArrow = document.getElementById('readMoreArrow');
             if (moreContent.classList.contains('expanded')) {
                 moreContent.classList.remove('expanded');
-                btnText.textContent = 'Leer más';
-                btnArrow.textContent = '→';
+                readMoreText.textContent = 'Leer más';
+                readMoreArrow.textContent = '→';
             } else {
                 moreContent.classList.add('expanded');
-                btnText.textContent = 'Leer menos';
-                btnArrow.textContent = '↑';
+                readMoreText.textContent = 'Leer menos';
+                readMoreArrow.textContent = '↑';
             }
         }
 
         const fadeObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) { entry.target.classList.add('visible'); }
             });
         }, { threshold: 0.1 });
-
         document.querySelectorAll('.fade-in-scroll').forEach(el => fadeObserver.observe(el));
     </script>
 </body>
