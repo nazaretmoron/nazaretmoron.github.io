@@ -1080,4 +1080,16 @@
             .stat-item {
                 text-align: center;
             }
+        body {
+    color: var(--burdeos);
+}
+
+.hero-description,
+.section-subtitle,
+.project-content p,
+.resource-card p,
+.about-text,
+.skill-card p {
+    color: #4a2a33;
+}
         }
