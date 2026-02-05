@@ -7,266 +7,1256 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Work+Sans:wght@300;400;500;600;700;800&display=swap');
         
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --burdeos: #68192E;
+            --burdeos-dark: #3D0E1A;
+            --rosa-neon: #FF1493;
+            --rosa-intenso: #C9184A;
+            --oro: #FFD700;
+            --oro-rosa: #E0AC9C;
+            --champagne: #F7E7CE;
+            --fondo-crema: #F5F1E8;
+            --blanco: #FDFCFA;
+            --negro: #2B2B2B;
+        }
         
-        html { scroll-behavior: smooth; }
-
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
         body {
             font-family: 'Work Sans', sans-serif;
-            background: #F5F1E8;
-            color: #2B2B2B;
-            line-height: 1.8;
-            padding-top: 80px; /* Espacio para el menú fijo */
+            background: var(--fondo-crema);
+            color: var(--negro);
+            overflow-x: hidden;
         }
-
-        /* ═══════ TU ENCABEZADO ORIGINAL ═══════ */
+        
+        /* NAVIGATION - COPIADA EXACTAMENTE DE TU WEB */
         nav {
             position: fixed;
             top: 0;
-            left: 0;
-            right: 0;
-            background: rgba(253, 252, 250, 0.95);
+            width: 100%;
+            background: rgba(253, 252, 250, 0.98);
             backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(104, 25, 46, 0.1);
             z-index: 1000;
-            padding: 0 40px;
-            height: 80px;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.03);
+        }
+        
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 24px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
             display: flex;
             align-items: center;
-            justify-content: space-between;
-        }
-
-        .logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 28px;
-            font-weight: 900;
-            color: #68192E;
+            gap: 14px;
             text-decoration: none;
         }
-
-        .logo span { color: #FF1493; }
-
-        .nav-links { display: flex; gap: 40px; }
-
+        
+        .logo-initial {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--burdeos), var(--rosa-neon));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 800;
+            font-size: 22px;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 24px;
+            color: var(--negro);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 45px;
+            list-style: none;
+            align-items: center;
+        }
+        
         .nav-links a {
             text-decoration: none;
-            color: #68192E;
-            font-size: 13px;
+            color: var(--negro);
             font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: 0.3s;
+            font-size: 15px;
+            letter-spacing: 0.3px;
+            position: relative;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:not(.nav-cta)::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--rosa-neon);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:not(.nav-cta):hover::after {
+            width: 100%;
+        }
+        
+        .nav-links a:hover {
+            color: var(--rosa-neon);
+        }
+        
+        .nav-cta {
+            padding: 13px 30px;
+            background: var(--burdeos);
+            color: white !important;
+            border-radius: 50px;
+            transition: all 0.3s;
+        }
+        
+        .nav-cta:hover {
+            background: var(--rosa-neon);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 20, 147, 0.3);
         }
 
-        .nav-links a:hover { color: #FF1493; }
-
-        /* ═══════ ESTRUCTURA DE PÁGINAS ROSA ═══════ */
+        /* ESPACIADO SUPERIOR */
+        .page-wrapper {
+            padding-top: 90px;
+        }
+        
+        /* PÁGINAS DEL RESUMEN */
         .page {
             width: 210mm;
-            min-height: 297mm;
-            margin: 0 auto 40px auto;
-            background: #FDFCFA;
+            margin: 20px auto;
+            background: var(--blanco);
             position: relative;
+            padding: 0;
             overflow: hidden;
-            box-shadow: 0 0 40px rgba(0,0,0,0.1);
+            box-shadow: 0 0 40px rgba(0,0,0,0.08);
         }
-
-        /* PÁGINA 1: PORTADA ROSA */
+        
+        /* PORTADA ROSA */
         .cover {
             background: linear-gradient(135deg, #FF1493 0%, #FF69B4 100%);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             padding: 60px;
-            color: white;
-            min-height: 297mm;
+            position: relative;
+            overflow: hidden;
         }
-
+        
         .cover::before {
-            content: ''; position: absolute; width: 500px; height: 500px;
-            border: 60px solid rgba(255,215,0,0.12); border-radius: 50%;
-            top: -200px; right: -150px;
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            border: 60px solid rgba(255,215,0,0.12);
+            border-radius: 50%;
+            top: -200px;
+            right: -150px;
         }
-
+        
+        .cover::after {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(104, 25, 46, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            bottom: -100px;
+            left: -100px;
+        }
+        
+        .geometric-lines {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            opacity: 0.1;
+        }
+        
+        .line {
+            position: absolute;
+            background: white;
+            transform-origin: center;
+        }
+        
+        .line:nth-child(1) {
+            width: 2px;
+            height: 300px;
+            top: 20%;
+            left: 15%;
+            transform: rotate(25deg);
+        }
+        
+        .line:nth-child(2) {
+            width: 2px;
+            height: 200px;
+            top: 40%;
+            right: 20%;
+            transform: rotate(-15deg);
+        }
+        
+        .line:nth-child(3) {
+            width: 2px;
+            height: 250px;
+            bottom: 10%;
+            left: 30%;
+            transform: rotate(45deg);
+        }
+        
+        .cover-content {
+            position: relative;
+            z-index: 2;
+        }
+        
         .pill {
-            display: inline-block; background: rgba(255,255,255,0.2);
-            backdrop-filter: blur(10px); padding: 10px 24px; border-radius: 30px;
-            font-size: 10px; font-weight: 700; letter-spacing: 3px;
-            text-transform: uppercase; border: 1px solid rgba(255,255,255,0.3);
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            padding: 10px 24px;
+            border-radius: 30px;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: white;
+            margin-bottom: 40px;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+        
+        .cover h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 64px;
+            font-weight: 900;
+            color: white;
+            line-height: 1.05;
+            margin-bottom: 25px;
+        }
+        
+        .cover h1 .highlight {
+            background: var(--oro);
+            color: var(--burdeos);
+            padding: 0 16px;
+            display: inline-block;
+            transform: skew(-3deg);
+        }
+        
+        .cover-subtitle {
+            font-size: 17px;
+            font-weight: 400;
+            color: rgba(255,255,255,0.95);
+            max-width: 480px;
+            line-height: 1.7;
+            margin-bottom: 50px;
+        }
+        
+        .cover-stat-box {
+            display: inline-flex;
+            align-items: center;
+            gap: 25px;
+            background: white;
+            padding: 25px 35px;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            position: relative;
             margin-bottom: 40px;
         }
-
-        .cover h1 {
-            font-family: 'Playfair Display', serif; font-size: 64px;
-            font-weight: 900; line-height: 1.05; margin-bottom: 25px;
+        
+        .cover-stat-box::before {
+            content: '';
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: var(--oro);
+            border-radius: 50%;
+            top: 15px;
+            left: 15px;
         }
-
-        .cover h1 .highlight {
-            background: #FFD700; color: #68192E; padding: 0 16px;
-            display: inline-block; transform: skew(-3deg);
+        
+        .cover-stat-box::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: #FF1493;
+            border-radius: 50%;
+            bottom: 15px;
+            right: 15px;
         }
-
-        .cover-stat-box {
-            display: inline-flex; align-items: center; gap: 25px;
-            background: white; padding: 25px 35px; border-radius: 12px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.2); color: #2B2B2B;
+        
+        .stat-graphic {
+            width: 50px;
+            height: 50px;
+            position: relative;
         }
-
+        
+        .stat-circle {
+            width: 100%;
+            height: 100%;
+            border: 3px solid #FF1493;
+            border-radius: 50%;
+            position: relative;
+        }
+        
+        .stat-circle::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: var(--oro);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .cover-stat-value {
+            font-family: 'Playfair Display', serif;
+            font-size: 42px;
+            font-weight: 900;
+            color: #FF1493;
+            line-height: 1;
+        }
+        
+        .cover-stat-label {
+            font-size: 11px;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 4px;
+        }
+        
+        .cover-footer {
+            border-top: 1px solid rgba(255,255,255,0.3);
+            padding-top: 25px;
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .cover-author {
+            font-size: 15px;
+            font-weight: 700;
+            color: white;
+        }
+        
+        .cover-role {
+            font-size: 12px;
+            color: rgba(255,255,255,0.8);
+            margin-top: 4px;
+        }
+        
         /* PÁGINAS INTERNAS */
-        .content-page { padding: 80px 70px; scroll-margin-top: 100px; }
+        .content-page {
+            padding: 70px 60px;
+            position: relative;
+        }
+        
+        .page-vector {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 250px;
+            height: 100%;
+            opacity: 0.04;
+            pointer-events: none;
+        }
+        
+        .vector-shapes {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .shape-circle {
+            position: absolute;
+            border: 4px solid #FF1493;
+            border-radius: 50%;
+        }
+        
+        .shape-circle.large {
+            width: 180px;
+            height: 180px;
+            top: 8%;
+            right: 10%;
+        }
+        
+        .shape-circle.medium {
+            width: 100px;
+            height: 100px;
+            top: 38%;
+            right: 25%;
+        }
+        
+        .shape-circle.small {
+            width: 140px;
+            height: 140px;
+            top: 65%;
+            right: 8%;
+        }
+        
+        .shape-line {
+            position: absolute;
+            background: var(--oro);
+            transform-origin: center;
+        }
+        
+        .shape-line:nth-child(1) {
+            width: 3px;
+            height: 150px;
+            top: 15%;
+            right: 40%;
+            transform: rotate(30deg);
+        }
+        
+        .shape-line:nth-child(2) {
+            width: 3px;
+            height: 120px;
+            top: 55%;
+            right: 15%;
+            transform: rotate(-20deg);
+        }
+        
         .badge {
-            background: linear-gradient(135deg, #FF1493 0%, #FF69B4 100%);
-            color: white; padding: 10px 24px; border-radius: 20px;
-            font-size: 10px; font-weight: 700; text-transform: uppercase; margin-bottom: 30px;
             display: inline-block;
+            background: linear-gradient(135deg, #FF1493 0%, #FF69B4 100%);
+            color: white;
+            padding: 10px 24px;
+            border-radius: 20px;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        .badge::before {
+            content: '';
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: var(--oro);
+            border-radius: 50%;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 52px;
+            font-weight: 900;
+            color: var(--burdeos);
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+        
+        .section-title .accent {
+            color: #FF1493;
+            position: relative;
+        }
+        
+        .section-title .accent::after {
+            content: '';
+            position: absolute;
+            bottom: 8px;
+            left: 0;
+            width: 100%;
+            height: 14px;
+            background: var(--oro);
+            z-index: -1;
+            opacity: 0.35;
+        }
+        
+        .divider-modern {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin: 30px 0 50px 0;
+        }
+        
+        .divider-modern::before {
+            content: '';
+            width: 70px;
+            height: 4px;
+            background: linear-gradient(90deg, #FF1493 0%, var(--oro) 100%);
+            border-radius: 2px;
+        }
+        
+        .divider-modern::after {
+            content: '';
+            width: 12px;
+            height: 12px;
+            background: var(--oro);
+            border-radius: 50%;
+        }
+        
+        .insight-card {
+            background: white;
+            border-radius: 16px;
+            padding: 45px;
+            margin: 40px 0;
+            box-shadow: 0 4px 30px rgba(255, 20, 147, 0.08);
+            border: 2px solid var(--oro);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .insight-card::before {
+            content: '';
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            border: 30px solid rgba(255, 20, 147, 0.05);
+            border-radius: 50%;
+            top: -40px;
+            right: -40px;
+        }
+        
+        .card-decorator {
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            width: 40px;
+            height: 40px;
+            border: 3px solid #FF1493;
+            border-radius: 50%;
+        }
+        
+        .card-decorator::after {
+            content: '';
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: var(--oro);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .card-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--burdeos);
+            margin-bottom: 15px;
+            margin-top: 20px;
+            position: relative;
+        }
+        
+        .card-text {
+            font-size: 16px;
+            line-height: 1.7;
+            color: #444;
+            position: relative;
+        }
+        
+        .stats-modern {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin: 40px 0;
+        }
+        
+        .stat-modern {
+            background: linear-gradient(135deg, var(--blanco) 0%, #FFF9F0 100%);
+            border-left: 5px solid #FF1493;
+            padding: 35px;
+            border-radius: 8px;
+            position: relative;
+        }
+        
+        .stat-modern::after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            border: 2px solid rgba(255, 215, 0, 0.2);
+            border-radius: 50%;
+            bottom: 15px;
+            right: 15px;
+        }
+        
+        .stat-modern-label {
+            font-size: 12px;
+            color: #FF1493;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+        }
+        
+        .stat-modern-value {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            font-weight: 900;
+            color: var(--burdeos);
+            line-height: 1;
+            margin-bottom: 10px;
+            position: relative;
+        }
+        
+        .stat-modern-desc {
+            font-size: 13px;
+            color: #666;
+            position: relative;
+        }
+        
+        .finding-modern {
+            display: flex;
+            gap: 30px;
+            margin: 35px 0;
+            padding: 35px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.04);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .finding-modern::before {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            border: 2px solid rgba(255, 215, 0, 0.15);
+            border-radius: 50%;
+            top: -20px;
+            right: -20px;
+        }
+        
+        .finding-num-graphic {
+            flex-shrink: 0;
+            width: 80px;
+            height: 80px;
+            position: relative;
+        }
+        
+        .num-circle-outer {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #FF1493 0%, #FF69B4 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 20px rgba(255, 20, 147, 0.25);
+            position: relative;
+        }
+        
+        .num-circle-outer::before {
+            content: '';
+            position: absolute;
+            width: 90px;
+            height: 90px;
+            border: 2px solid rgba(255, 20, 147, 0.2);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .num-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            font-weight: 900;
+            color: white;
+        }
+        
+        .finding-body {
+            flex: 1;
+            position: relative;
+        }
+        
+        .finding-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--burdeos);
+            margin-bottom: 12px;
+        }
+        
+        .finding-text {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.7;
+        }
+        
+        .finding-tag {
+            display: inline-block;
+            background: var(--oro);
+            color: var(--burdeos);
+            padding: 5px 14px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 700;
+            margin-top: 12px;
+        }
+        
+        .decision-modern {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 50px 0;
+        }
+        
+        .decision-box {
+            padding: 40px;
+            border-radius: 16px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .decision-box.yes {
+            background: linear-gradient(135deg, #D4EDDA 0%, #C3E6CB 100%);
+            border: 3px solid #28A745;
+        }
+        
+        .decision-box.no {
+            background: linear-gradient(135deg, #F8D7DA 0%, #F5C6CB 100%);
+            border: 3px solid #DC3545;
+        }
+        
+        .decision-decorator {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border: 20px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            top: -30px;
+            right: -30px;
+        }
+        
+        .decision-header {
+            font-family: 'Playfair Display', serif;
+            font-size: 26px;
+            font-weight: 900;
+            color: var(--burdeos);
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        .decision-header::before {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 3px;
+            background: var(--oro);
+            bottom: -10px;
+            left: 0;
+        }
+        
+        .place-simple {
+            padding: 18px 0;
+            border-bottom: 1px dashed rgba(0,0,0,0.1);
+        }
+        
+        .place-simple:last-child {
+            border-bottom: none;
+        }
+        
+        .place-simple-name {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--burdeos);
+        }
+        
+        .place-simple-value {
+            font-size: 24px;
+            font-weight: 900;
+            color: #FF1493;
+            margin: 6px 0;
+        }
+        
+        .place-simple-info {
+            font-size: 12px;
+            color: #666;
+        }
+        
+        .conclusion-modern {
+            background: linear-gradient(135deg, var(--oro) 0%, #FFC700 100%);
+            padding: 50px;
+            border-radius: 20px;
+            margin: 50px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .conclusion-modern::before {
+            content: '';
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border: 40px solid rgba(104, 25, 46, 0.08);
+            border-radius: 50%;
+            top: -80px;
+            right: -80px;
+        }
+        
+        .conclusion-modern h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            font-weight: 900;
+            color: var(--burdeos);
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .conclusion-modern p {
+            font-size: 18px;
+            line-height: 1.7;
+            color: var(--negro);
+            position: relative;
+        }
+        
+        .text-block {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #444;
+            margin-bottom: 30px;
+        }
+        
+        .text-block.lead {
+            font-size: 22px;
+            font-weight: 500;
+            color: var(--burdeos);
+            line-height: 1.6;
         }
 
-        .section-title { font-family: 'Playfair Display', serif; font-size: 52px; font-weight: 900; color: #68192E; line-height: 1.1; margin-bottom: 20px; }
-        .accent { color: #FF1493; position: relative; }
-        .accent::after { content: ''; position: absolute; bottom: 8px; left: 0; width: 100%; height: 14px; background: #FFD700; z-index: -1; opacity: 0.3; }
-
-        .stats-modern { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin: 40px 0; }
-        .stat-modern { background: #FFF9F0; border-left: 5px solid #FF1493; padding: 35px; border-radius: 8px; }
-        .stat-modern-value { font-family: 'Playfair Display', serif; font-size: 48px; font-weight: 900; color: #68192E; }
-
-        .finding-modern { display: flex; gap: 30px; margin: 35px 0; padding: 35px; background: white; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
-        .num-circle { width: 60px; height: 60px; background: #FF1493; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: 900; flex-shrink: 0; }
-
-        .decision-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 40px 0; }
-        .decision-box { padding: 40px; border-radius: 16px; border: 3px solid; }
-        .yes { background: #E8F5E9; border-color: #28A745; }
-        .no { background: #FFEBEE; border-color: #DC3545; }
-
-        /* BOTONES ACCIÓN */
-        .btn-naz {
-            padding: 18px 35px; border-radius: 50px; text-decoration: none;
-            font-weight: 800; font-size: 13px; text-transform: uppercase;
-            transition: 0.3s; display: inline-block;
+        /* SECCIÓN DE BOTONES */
+        .action-section {
+            width: 210mm;
+            margin: 40px auto 60px auto;
+            background: linear-gradient(135deg, #FFE5F0 0%, var(--champagne) 100%);
+            border-radius: 20px;
+            padding: 60px;
+            text-align: center;
+            box-shadow: 0 8px 40px rgba(255, 20, 147, 0.12);
+            position: relative;
+            overflow: hidden;
         }
-        .btn-naz-fill { background: #68192E; color: white; }
-        .btn-naz-outline { border: 2px solid #FF1493; color: #FF1493; }
-        .btn-naz:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
 
+        .action-section::before {
+            content: '';
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border: 30px solid rgba(255, 20, 147, 0.08);
+            border-radius: 50%;
+            top: -80px;
+            right: -80px;
+        }
+
+        .action-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 36px;
+            font-weight: 900;
+            color: var(--burdeos);
+            margin-bottom: 16px;
+            position: relative;
+        }
+
+        .action-section p {
+            font-size: 17px;
+            color: #666;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.7;
+            position: relative;
+        }
+
+        .btn-row {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            position: relative;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 18px 40px;
+            border-radius: 50px;
+            font-size: 15px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-primary {
+            background: #FF1493;
+            color: white;
+            box-shadow: 0 8px 30px rgba(255, 20, 147, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: #e0107f;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(255, 20, 147, 0.4);
+        }
+
+        .btn-secondary {
+            background: var(--burdeos);
+            color: white;
+            box-shadow: 0 8px 30px rgba(104, 25, 46, 0.3);
+        }
+
+        .btn-secondary:hover {
+            background: #8B1538;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(104, 25, 46, 0.4);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .nav-container {
+                padding: 16px 20px;
+                flex-direction: column;
+                gap: 16px;
+            }
+
+            .nav-links {
+                gap: 20px;
+            }
+
+            .page {
+                width: 100%;
+                margin: 10px 0;
+            }
+
+            .cover h1 {
+                font-size: 42px;
+            }
+
+            .section-title {
+                font-size: 36px;
+            }
+
+            .action-section {
+                width: 100%;
+                padding: 40px 24px;
+                margin: 20px auto;
+            }
+
+            .btn-row {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+        
         @media print {
-            nav, .btn-naz { display: none; }
-            body { padding-top: 0; }
-            .page { margin: 0; box-shadow: none; page-break-after: always; }
+            nav, .action-section {
+                display: none;
+            }
+            .page {
+                margin: 0;
+                box-shadow: none;
+                page-break-after: always;
+            }
+            body {
+                background: white;
+            }
         }
     </style>
 </head>
 <body>
 
+    <!-- NAVEGACIÓN (DE TU WEB EXACTA) -->
     <nav>
-        <a href="../../index.html" class="logo">Naz<span>.</span></a>
-        <div class="nav-links">
-            <a href="../../index.html#proyectos">Proyectos</a>
-            <a href="../../index.html#sobre-mi">Sobre mí</a>
-            <a href="mailto:data.nazaret@gmail.com">Contacto</a>
+        <div class="nav-container">
+            <a href="../../index.html#inicio" class="logo">
+                <div class="logo-initial">N</div>
+                <span class="logo-text">Nazaret</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="../../index.html#proyectos">Proyectos</a></li>
+                <li><a href="../../index.html#recursos">Recursos</a></li>
+                <li><a href="../../index.html#sobre-mi">Sobre Mí</a></li>
+                <li><a href="../../index.html#contacto" class="nav-cta">Contacto</a></li>
+            </ul>
         </div>
     </nav>
 
-    <div class="page cover">
-        <div class="cover-content">
-            <div class="pill">RESUMEN EJECUTIVO · 2026</div>
-            <h1>Dónde invertir<br>en <span class="highlight">Málaga</span></h1>
-            <p style="font-size: 18px; margin-top: 30px; max-width: 500px;">Análisis RevPAR: Barrios periféricos superan a zonas tradicionales en rentabilidad real.</p>
-            <div class="cover-stat-box" style="margin-top: 40px;">
-                <div>
-                    <div style="font-family: 'Playfair Display'; font-size: 42px; font-weight: 900; color: #FF1493;">8.300+</div>
-                    <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #666;">Propiedades analizadas</div>
+    <div class="page-wrapper">
+
+        <!-- PORTADA -->
+        <div class="page cover">
+            <div class="geometric-lines">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+            
+            <div class="cover-content">
+                <div class="pill">RESUMEN EJECUTIVO · 2026</div>
+                <h1>
+                    Dónde invertir<br>
+                    en <span class="highlight">Málaga</span>
+                </h1>
+                <p class="cover-subtitle">
+                    Los datos revelan oportunidades ocultas: barrios periféricos superan a zonas tradicionales en rentabilidad con 98% menos competencia.
+                </p>
+                <div class="cover-stat-box">
+                    <div class="stat-graphic">
+                        <div class="stat-circle"></div>
+                    </div>
+                    <div>
+                        <div class="cover-stat-value">8.300+</div>
+                        <div class="cover-stat-label">Propiedades analizadas</div>
+                    </div>
                 </div>
             </div>
-            <div style="margin-top: 50px;">
-                <a href="#hallazgo" class="btn-naz btn-naz-fill">Ver Informe Completo</a>
+            <div class="cover-footer">
+                <div>
+                    <div class="cover-author">NAZARET MORÓN</div>
+                    <div class="cover-role">Analista Digital · Granada</div>
+                </div>
+                <div class="cover-role" style="text-align: right;">
+                    Enero 2026
+                </div>
             </div>
         </div>
-        <div style="display: flex; justify-content: space-between; border-top: 1px solid rgba(255,255,255,0.3); padding-top: 25px;">
-            <div><strong>NAZARET MORÓN</strong><br><span style="font-size: 12px; opacity: 0.8;">Analista Digital</span></div>
-            <div style="font-size: 12px; opacity: 0.8;">Enero 2026</div>
+
+        <!-- HALLAZGO -->
+        <div class="page content-page">
+            <div class="page-vector">
+                <div class="vector-shapes">
+                    <div class="shape-circle large"></div>
+                    <div class="shape-circle medium"></div>
+                    <div class="shape-circle small"></div>
+                    <div class="shape-line"></div>
+                    <div class="shape-line"></div>
+                </div>
+            </div>
+            
+            <div class="badge">EL HALLAZGO</div>
+            <h2 class="section-title">
+                La <span class="accent">paradoja</span><br>del Centro
+            </h2>
+            <div class="divider-modern"></div>
+            
+            <p class="text-block lead">
+                Churriana destrona a Centro en rentabilidad real con una fracción de la competencia.
+            </p>
+            
+            <div class="stats-modern">
+                <div class="stat-modern">
+                    <div class="stat-modern-label">CHURRIANA</div>
+                    <div class="stat-modern-value">12,4€</div>
+                    <div class="stat-modern-desc">RevPAR · 150 propiedades</div>
+                </div>
+                <div class="stat-modern">
+                    <div class="stat-modern-label">CENTRO</div>
+                    <div class="stat-modern-value">12,1€</div>
+                    <div class="stat-modern-desc">RevPAR · 6.389 propiedades</div>
+                </div>
+            </div>
+            
+            <div class="insight-card">
+                <div class="card-decorator"></div>
+                <h3 class="card-title">Implicación Estratégica</h3>
+                <p class="card-text">
+                    El 77% del mercado se concentra en Centro, pero su RevPAR apenas alcanza el segundo lugar. <strong>La saturación mata la rentabilidad.</strong> La oportunidad está en barrios emergentes con demanda validada y baja competencia.
+                </p>
+            </div>
         </div>
+
+        <!-- TRES DATOS -->
+        <div class="page content-page">
+            <div class="page-vector">
+                <div class="vector-shapes">
+                    <div class="shape-circle large"></div>
+                    <div class="shape-circle medium"></div>
+                    <div class="shape-circle small"></div>
+                    <div class="shape-line"></div>
+                    <div class="shape-line"></div>
+                </div>
+            </div>
+            
+            <div class="badge">INSIGHTS CLAVE</div>
+            <h2 class="section-title">
+                Tres datos<br>
+                <span class="accent">accionables</span>
+            </h2>
+            <div class="divider-modern"></div>
+            
+            <div class="finding-modern">
+                <div class="finding-num-graphic">
+                    <div class="num-circle-outer">
+                        <div class="num-text">01</div>
+                    </div>
+                </div>
+                <div class="finding-body">
+                    <h3 class="finding-title">Océano azul identificado</h3>
+                    <p class="finding-text">
+                        Los 5 barrios más rentables concentran solo el 10% de la oferta total. Amplio espacio para nuevos entrantes.
+                    </p>
+                    <span class="finding-tag">Churriana · Palma-Palmilla · Este</span>
+                </div>
+            </div>
+            
+            <div class="finding-modern">
+                <div class="finding-num-graphic">
+                    <div class="num-circle-outer">
+                        <div class="num-text">02</div>
+                    </div>
+                </div>
+                <div class="finding-body">
+                    <h3 class="finding-title">Saturación erosiona márgenes</h3>
+                    <p class="finding-text">
+                        Barrios con menos de 500 propiedades mantienen rentabilidad superior. La competencia excesiva genera guerra de precios.
+                    </p>
+                    <span class="finding-tag">Correlación negativa comprobada</span>
+                </div>
+            </div>
+            
+            <div class="finding-modern">
+                <div class="finding-num-graphic">
+                    <div class="num-circle-outer">
+                        <div class="num-text">03</div>
+                    </div>
+                </div>
+                <div class="finding-body">
+                    <h3 class="finding-title">Teatinos: la zona trampa</h3>
+                    <p class="finding-text">
+                        RevPAR de 3€/día — el más bajo. Demanda estudiantil incompatible con modelo turístico de alta rotación.
+                    </p>
+                    <span class="finding-tag">Evitar inversión</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- DECISIÓN -->
+        <div class="page content-page">
+            <div class="badge">DECISIÓN</div>
+            <h2 class="section-title">
+                Dónde <span class="accent">invertir</span><br>
+                vs evitar
+            </h2>
+            <div class="divider-modern"></div>
+            
+            <div class="decision-modern">
+                <div class="decision-box yes">
+                    <div class="decision-decorator"></div>
+                    <h3 class="decision-header">Priorizar</h3>
+                    
+                    <div class="place-simple">
+                        <div class="place-simple-name">Churriana</div>
+                        <div class="place-simple-value">12,4€</div>
+                        <div class="place-simple-info">150 propiedades · ROI rápido</div>
+                    </div>
+                    
+                    <div class="place-simple">
+                        <div class="place-simple-name">Palma-Palmilla</div>
+                        <div class="place-simple-value">10,5€</div>
+                        <div class="place-simple-info">217 propiedades · Balance ideal</div>
+                    </div>
+                    
+                    <div class="place-simple">
+                        <div class="place-simple-name">Este</div>
+                        <div class="place-simple-value">10,4€</div>
+                        <div class="place-simple-info">989 propiedades · Seguro</div>
+                    </div>
+                </div>
+                
+                <div class="decision-box no">
+                    <div class="decision-decorator"></div>
+                    <h3 class="decision-header">Evitar</h3>
+                    
+                    <div class="place-simple">
+                        <div class="place-simple-name">Centro</div>
+                        <div class="place-simple-value" style="color: #DC3545;">12,1€</div>
+                        <div class="place-simple-info">6.389 propiedades · Competencia extrema</div>
+                    </div>
+                    
+                    <div class="place-simple">
+                        <div class="place-simple-name">Teatinos-Universidad</div>
+                        <div class="place-simple-value" style="color: #999;">3€</div>
+                        <div class="place-simple-info">Peor RevPAR de Málaga</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="conclusion-modern">
+                <h3>La regla de oro</h3>
+                <p>
+                    No competir donde todos compiten. <strong>Buscar espacios con demanda validada pero oferta limitada.</strong> Los datos no mienten: calidad supera a cantidad.
+                </p>
+            </div>
+        </div>
+
+        <!-- CIERRE -->
+        <div class="page content-page">
+            <div class="badge">CONCLUSIÓN</div>
+            <h2 class="section-title">
+                Decisiones basadas<br>
+                en <span class="accent">datos</span>
+            </h2>
+            <div class="divider-modern"></div>
+            
+            <div class="insight-card">
+                <div class="card-decorator"></div>
+                <h3 class="card-title">Ventana de oportunidad limitada</h3>
+                <p class="card-text">
+                    Los barrios emergentes experimentan crecimiento acelerado. <strong>Cada nueva propiedad reduce la ventaja de los pioneros.</strong> Decisión recomendada: primer semestre 2026.
+                </p>
+            </div>
+            
+            <div style="margin-top: 80px; padding-top: 40px; border-top: 2px solid var(--oro);">
+                <div style="font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 900; color: var(--burdeos); margin-bottom: 8px;">
+                    Nazaret Morón
+                </div>
+                <div style="font-size: 14px; color: #666; margin-bottom: 20px;">
+                    Analista Digital · Granada, España
+                </div>
+                <div style="font-size: 13px;">
+                    <a href="https://linkedin.com/in/nazaretmoron" style="color: #FF1493; text-decoration: none; margin: 0 15px; font-weight: 600;">LinkedIn</a>
+                    <a href="https://github.com/nazaretmoron" style="color: #FF1493; text-decoration: none; margin: 0 15px; font-weight: 600;">GitHub</a>
+                    <a href="mailto:data.nazaret@gmail.com" style="color: #FF1493; text-decoration: none; margin: 0 15px; font-weight: 600;">Email</a>
+                </div>
+            </div>
+        </div>
+
     </div>
 
-    <div class="page content-page" id="hallazgo">
-        <div class="badge">EL HALLAZGO</div>
-        <h2 class="section-title">La <span class="accent">paradoja</span><br>del Centro</h2>
-        <div class="stats-modern">
-            <div class="stat-modern">
-                <p style="color: #FF1493; font-weight: 700; font-size: 11px;">CHURRIANA</p>
-                <div class="stat-modern-value">12,4€</div>
-                <p style="font-size: 13px; color: #666;">RevPAR · 150 propiedades</p>
-            </div>
-            <div class="stat-modern">
-                <p style="color: #FF1493; font-weight: 700; font-size: 11px;">CENTRO</p>
-                <div class="stat-modern-value">12,1€</div>
-                <p style="font-size: 13px; color: #666;">RevPAR · 6.389 propiedades</p>
-            </div>
-        </div>
-        <div style="background: white; border: 2px solid #FFD700; padding: 40px; border-radius: 15px;">
-            <p>El 77% del mercado se concentra en Centro. <strong>La saturación está matando la rentabilidad.</strong> La oportunidad real está en la periferia validada.</p>
-        </div>
-    </div>
-
-    <div class="page content-page">
-        <div class="badge">INSIGHTS CLAVE</div>
-        <h2 class="section-title">Tres datos<br><span class="accent">accionables</span></h2>
-        <div class="finding-modern">
-            <div class="num-circle">01</div>
-            <div>
-                <h3 style="color:#68192E;">Océano azul</h3>
-                <p style="color:#666;">Los barrios más rentables solo concentran el 10% de la oferta.</p>
-            </div>
-        </div>
-        <div class="finding-modern">
-            <div class="num-circle">02</div>
-            <div>
-                <h3 style="color:#68192E;">Saturación</h3>
-                <p style="color:#666;">A más de 500 propiedades por zona, la rentabilidad cae un 15%.</p>
-            </div>
-        </div>
-        <div class="finding-modern">
-            <div class="num-circle">03</div>
-            <div>
-                <h3 style="color:#68192E;">Zona trampa</h3>
-                <p style="color:#666;">Teatinos registra el RevPAR más bajo (3€) por demanda estudiantil.</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="page content-page">
-        <div class="badge">ESTRATEGIA</div>
-        <h2 class="section-title">Dónde <span class="accent">invertir</span><br>vs evitar</h2>
-        <div class="decision-grid">
-            <div class="decision-box yes">
-                <h3 style="font-family:'Playfair Display'; margin-bottom:15px;">Priorizar</h3>
-                <p><strong>Churriana:</strong> ROI rápido.<br><strong>Palma-Palmilla:</strong> Balance ideal.</p>
-            </div>
-            <div class="decision-box no">
-                <h3 style="font-family:'Playfair Display'; margin-bottom:15px;">Evitar</h3>
-                <p><strong>Centro:</strong> Saturación crítica.<br><strong>Teatinos:</strong> RevPAR nulo.</p>
-            </div>
-        </div>
-        <div style="background:#FFD700; padding:40px; border-radius:15px; margin-top:30px;">
-            <h3 style="font-family:'Playfair Display'; color:#68192E;">La regla de oro</h3>
-            <p>No competir donde todos compiten. Buscar demanda validada con oferta limitada.</p>
-        </div>
-    </div>
-
-    <div class="page content-page">
-        <div class="badge">CONCLUSIÓN</div>
-        <h2 class="section-title">Decisiones con <span class="accent">datos</span></h2>
-        <div style="background:white; border:2px solid #FFD700; padding:45px; border-radius:16px; margin-bottom:60px;">
-            <h3 style="font-family:'Playfair Display'; color:#68192E; margin-bottom:15px;">Oportunidad 2026</h3>
-            <p>Los barrios emergentes crecen rápido. La ventaja es para los pioneros en este primer semestre.</p>
-        </div>
-
-        <div style="display:flex; gap:20px; justify-content:center; margin-bottom:60px;">
-            <a href="index.html" class="btn-naz btn-naz-fill">Caso Completo</a>
-            <a href="resumen-revpar.pdf" class="btn-naz btn-naz-outline" download>Descargar PDF</a>
-        </div>
-
-        <div style="border-top:2px solid #FFD700; padding-top:40px;">
-            <div style="font-family:'Playfair Display'; font-size:28px; font-weight:900; color:#68192E;">Nazaret Morón</div>
-            <p style="color:#666; font-size:14px;">Analista Digital · Granada</p>
+    <!-- BOTONES DE ACCIÓN -->
+    <div class="action-section">
+        <h2>¿Quieres explorar más?</h2>
+        <p>Descarga el resumen en PDF o explora el análisis completo con todos los datos, gráficos y recomendaciones estratégicas detalladas.</p>
+        
+        <div class="btn-row">
+            <a href="https://nazaretmoron.github.io/proyectos/analisis-revpar-airbnb/" class="btn btn-primary">
+                Ver estudio completo →
+            </a>
+            <a href="resumen-revpar-airbnb.pdf" download class="btn btn-secondary">
+                📥 Descargar PDF
+            </a>
         </div>
     </div>
 
